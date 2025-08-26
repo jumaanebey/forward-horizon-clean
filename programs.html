@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs - Forward Horizon</title>
+    <meta name="description" content="Comprehensive transitional housing programs for veterans, recovering individuals, and returning citizens. Find the support you need.">
+    
+    <!-- Enhanced Professional Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Inter', 'system-ui', 'sans-serif'],
+                        'body': ['Open Sans', 'system-ui', 'sans-serif']
+                    },
+                    colors: {
+                        primary: {
+                            DEFAULT: '#1e40af',
+                            light: '#3b82f6',
+                            dark: '#1e3a8a'
+                        },
+                        secondary: {
+                            DEFAULT: '#059669',
+                            light: '#10b981',
+                            dark: '#047857'
+                        },
+                        gold: '#fbbf24',
+                        'text-primary': '#1f2937',
+                        'text-secondary': '#4b5563',
+                        'readable-light': '#6b7280',
+                        'readable-secondary': '#374151'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Copy essential styles from main index */
+        :root {
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #2563eb 100%);
+            --gradient-secondary: linear-gradient(135deg, #059669 0%, #10b981 50%, #047857 100%);
+            --gradient-gold: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #d97706 100%);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-md);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-enhanced {
+            position: relative;
+            overflow: hidden;
+            transform: translateZ(0);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 600;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-enhanced:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        .card-enhanced {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .card-enhanced:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-2xl);
+        }
+    </style>
+</head>
+<body class="font-body bg-gray-50 text-text-secondary">
+    <!-- Navigation -->
+    <nav class="glass-nav shadow-xl sticky top-0 w-full z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <a href="index.html" class="text-2xl font-display font-bold text-gradient hover:text-primary-dark transition-all duration-300 transform hover:scale-105">
+                            Forward Horizon
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden lg:flex items-center space-x-2">
+                    <a href="index.html" class="nav-link font-semibold text-text-secondary hover:text-primary transition-all duration-300 px-4 py-3 rounded-xl hover:bg-primary hover:bg-opacity-10">
+                        <i class="fas fa-home"></i>
+                        <span class="ml-2">Home</span>
+                    </a>
+                    <a href="programs.html" class="nav-link font-semibold text-primary bg-primary bg-opacity-10 px-4 py-3 rounded-xl">
+                        <i class="fas fa-users"></i>
+                        <span class="ml-2">Programs</span>
+                    </a>
+                    <a href="about.html" class="nav-link font-semibold text-text-secondary hover:text-primary transition-all duration-300 px-4 py-3 rounded-xl hover:bg-primary hover:bg-opacity-10">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="ml-2">About Us</span>
+                    </a>
+                    <a href="admissions.html" class="nav-link font-semibold text-text-secondary hover:text-primary transition-all duration-300 px-4 py-3 rounded-xl hover:bg-primary hover:bg-opacity-10">
+                        <i class="fas fa-file-alt"></i>
+                        <span class="ml-2">Admissions</span>
+                    </a>
+                    <a href="get-involved.html" class="nav-link font-semibold text-text-secondary hover:text-primary transition-all duration-300 px-4 py-3 rounded-xl hover:bg-primary hover:bg-opacity-10">
+                        <i class="fas fa-hands-helping"></i>
+                        <span class="ml-2">Get Involved</span>
+                    </a>
+                    <a href="faq.html" class="nav-link font-semibold text-text-secondary hover:text-primary transition-all duration-300 px-4 py-3 rounded-xl hover:bg-primary hover:bg-opacity-10">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="ml-2">FAQ</span>
+                    </a>
+                    <div class="divider-gradient w-px h-8 mx-2"></div>
+                    <a href="contact.html" class="btn-enhanced btn-primary px-6 py-3 rounded-xl font-display font-bold text-white shadow-lg">
+                        <i class="fas fa-phone"></i>
+                        <span class="ml-2">Contact</span>
+                    </a>
+                </div>
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-button" class="btn-enhanced text-text-secondary p-3 min-h-[48px] min-w-[48px] flex items-center justify-center hover:bg-primary hover:bg-opacity-10 rounded-xl">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="bg-gradient-to-br from-primary via-primary-dark to-secondary py-20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6">
+                Your Journey to Healing Starts Here
+            </h1>
+            <p class="font-body text-xl sm:text-2xl text-blue-100 max-w-3xl mx-auto">
+                Because you deserve more than just a roof over your head — you deserve to feel whole again
+            </p>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Veteran Transitional Housing -->
+                <div class="card-enhanced glass-card rounded-2xl shadow-lg overflow-hidden border border-gray-200 relative">
+                    <div class="h-56 bg-gradient-to-br from-primary to-primary-dark relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                        <div class="h-full flex flex-col items-center justify-center text-white px-6 relative z-10">
+                            <div class="w-20 h-20 bg-white bg-opacity-25 rounded-full flex items-center justify-center mb-6">
+                                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L13.09 8.26L19 6L16.74 11.74L23 12L16.74 12.26L19 18L13.09 15.74L12 22L10.91 15.74L5 18L7.26 12.26L1 12L7.26 11.74L5 6L10.91 8.26L12 2Z"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold text-center leading-tight">Veteran Transitional Housing</h3>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <p class="font-body text-readable-secondary mb-6 text-lg leading-relaxed">
+                            You protected us. Now let us protect you. Find peace, purpose, and pride as you write your next chapter with brothers and sisters who understand your journey.
+                        </p>
+                        <ul class="font-body text-readable-light mb-8 space-y-3">
+                            <li class="flex items-start"><span class="text-primary mr-3 text-xl font-bold">→</span>VA benefits assistance</li>
+                            <li class="flex items-start"><span class="text-primary mr-3 text-xl font-bold">→</span>PTSD and mental health support</li>
+                            <li class="flex items-start"><span class="text-primary mr-3 text-xl font-bold">→</span>Career transition services</li>
+                            <li class="flex items-start"><span class="text-primary mr-3 text-xl font-bold">→</span>Peer veteran mentorship</li>
+                        </ul>
+                        <a href="admissions.html" class="btn-enhanced inline-flex items-center font-display font-bold text-primary hover:text-primary-dark transition-colors duration-200">
+                            Learn More 
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sober Living After Detox -->
+                <div class="card-enhanced glass-card rounded-2xl shadow-lg overflow-hidden border border-gray-200 relative">
+                    <div class="h-56 bg-gradient-to-br from-secondary to-secondary-dark relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                        <div class="h-full flex flex-col items-center justify-center text-white px-6 relative z-10">
+                            <div class="w-20 h-20 bg-white bg-opacity-25 rounded-full flex items-center justify-center mb-6">
+                                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold text-center leading-tight">Sober Living After Detox</h3>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <p class="font-body text-readable-secondary mb-6 text-lg leading-relaxed">
+                            You've fought the hardest battle of your life. Now feel the relief of not fighting alone. Experience the strength that comes from shared stories and mutual understanding.
+                        </p>
+                        <ul class="font-body text-readable-light mb-8 space-y-3">
+                            <li class="flex items-start"><span class="text-secondary mr-3 text-xl font-bold">→</span>24/7 sober living environment</li>
+                            <li class="flex items-start"><span class="text-secondary mr-3 text-xl font-bold">→</span>Recovery program coordination</li>
+                            <li class="flex items-start"><span class="text-secondary mr-3 text-xl font-bold">→</span>Relapse prevention support</li>
+                            <li class="flex items-start"><span class="text-secondary mr-3 text-xl font-bold">→</span>Life skills development</li>
+                        </ul>
+                        <a href="admissions.html" class="btn-enhanced inline-flex items-center font-display font-bold text-secondary hover:text-secondary-dark transition-colors duration-200">
+                            Learn More 
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Re-entry Housing -->
+                <div class="card-enhanced glass-card rounded-2xl shadow-lg overflow-hidden border border-gray-200 relative">
+                    <div class="h-56 bg-gradient-to-br from-purple-600 to-purple-700 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                        <div class="h-full flex flex-col items-center justify-center text-white px-6 relative z-10">
+                            <div class="w-20 h-20 bg-white bg-opacity-25 rounded-full flex items-center justify-center mb-6">
+                                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 1L8 5V11C8 16.55 11.84 21.74 12 22C12.16 21.74 16 16.55 16 11V5L12 1ZM12 7C13.1 7 14 7.9 14 9S13.1 11 12 11 10 10.1 10 9 10.9 7 12 7Z"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold text-center leading-tight">Re-entry Housing</h3>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <p class="font-body text-readable-secondary mb-6 text-lg leading-relaxed">
+                            Your past doesn't define your future. Feel the freedom of a fresh start, the dignity of second chances, and the power of a community that sees your potential.
+                        </p>
+                        <ul class="font-body text-readable-light mb-8 space-y-3">
+                            <li class="flex items-start"><span class="text-purple-600 mr-3 text-xl font-bold">→</span>Employment placement assistance</li>
+                            <li class="flex items-start"><span class="text-purple-600 mr-3 text-xl font-bold">→</span>Legal aid connections</li>
+                            <li class="flex items-start"><span class="text-purple-600 mr-3 text-xl font-bold">→</span>Family reunification support</li>
+                            <li class="flex items-start"><span class="text-purple-600 mr-3 text-xl font-bold">→</span>Community reintegration programs</li>
+                        </ul>
+                        <a href="admissions.html" class="btn-enhanced inline-flex items-center font-display font-bold text-purple-600 hover:text-purple-700 transition-colors duration-200">
+                            Learn More 
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Services -->
+            <div class="mt-20">
+                <h2 class="font-display text-4xl sm:text-5xl font-bold text-center text-gradient mb-12">
+                    Everything You Need to Feel Whole Again
+                </h2>
+                
+                <div class="space-y-8">
+                    <!-- Structured Sober Living -->
+                    <div class="glass-card rounded-3xl p-10 border border-gray-200">
+                        <h3 class="font-display text-3xl font-bold text-text-primary mb-6 text-center">Structured Sober Living</h3>
+                        <div class="grid md:grid-cols-2 gap-10">
+                            <div>
+                                <p class="font-body text-lg text-readable-secondary mb-8 leading-relaxed">
+                                    Our sober living program provides a structured, supportive environment for individuals committed to recovery. 
+                                    With <strong>24/7 on-site support staff</strong>, comprehensive case management, and evidence-based programming.
+                                </p>
+                                <h4 class="font-display text-xl font-bold text-text-primary mb-6">Daily Structure</h4>
+                                <ul class="space-y-4 text-readable-secondary">
+                                    <li class="flex items-start"><span class="text-primary mr-4 text-xl font-bold">→</span>Morning accountability meetings</li>
+                                    <li class="flex items-start"><span class="text-primary mr-4 text-xl font-bold">→</span>Job search and employment assistance</li>
+                                    <li class="flex items-start"><span class="text-primary mr-4 text-xl font-bold">→</span>Life skills training workshops</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-display text-xl font-bold text-text-primary mb-6">Recovery Support</h4>
+                                <ul class="space-y-4 text-readable-secondary">
+                                    <li class="flex items-start"><span class="text-secondary mr-4 text-xl font-bold">→</span>Individual and group counseling</li>
+                                    <li class="flex items-start"><span class="text-secondary mr-4 text-xl font-bold">→</span>12-step program facilitation</li>
+                                    <li class="flex items-start"><span class="text-secondary mr-4 text-xl font-bold">→</span>Relapse prevention planning</li>
+                                    <li class="flex items-start"><span class="text-secondary mr-4 text-xl font-bold">→</span>Mental health services</li>
+                                    <li class="flex items-start"><span class="text-secondary mr-4 text-xl font-bold">→</span>Medication management support</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-display text-xl font-bold mb-4">Forward Horizon</h3>
+                    <p class="text-gray-400">Building bridges to brighter futures through community, accountability, and support.</p>
+                </div>
+                <div>
+                    <h4 class="font-display text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="programs.html" class="text-gray-400 hover:text-white">Programs</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display text-lg font-bold mb-4">Programs</h4>
+                    <ul class="space-y-2">
+                        <li><a href="programs.html#veteran" class="text-gray-400 hover:text-white">Veteran Housing</a></li>
+                        <li><a href="programs.html#recovery" class="text-gray-400 hover:text-white">Sober Living</a></li>
+                        <li><a href="programs.html#reentry" class="text-gray-400 hover:text-white">Re-entry Housing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display text-lg font-bold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center"><i class="fas fa-phone mr-2"></i> (310) 488-5280</li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-2"></i> info@forwardhorizon.com</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Los Angeles, CA</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Forward Horizon. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu?.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

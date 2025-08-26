@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions - Forward Horizon</title>
+    <meta name="description" content="Get answers to common questions about Forward Horizon's transitional housing programs, application process, and support services.">
+    
+    <!-- Enhanced Professional Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Inter', 'system-ui', 'sans-serif'],
+                        'body': ['Open Sans', 'system-ui', 'sans-serif']
+                    },
+                    colors: {
+                        primary: {
+                            DEFAULT: '#1e40af',
+                            light: '#3b82f6',
+                            dark: '#1e3a8a'
+                        },
+                        secondary: {
+                            DEFAULT: '#059669',
+                            light: '#10b981',
+                            dark: '#047857'
+                        },
+                        gold: '#fbbf24',
+                        'text-primary': '#1f2937',
+                        'text-secondary': '#4b5563',
+                        'readable-light': '#6b7280',
+                        'readable-secondary': '#374151'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #2563eb 100%);
+            --gradient-secondary: linear-gradient(135deg, #059669 0%, #10b981 50%, #047857 100%);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-md);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-enhanced {
+            position: relative;
+            overflow: hidden;
+            transform: translateZ(0);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 600;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-enhanced:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="font-body bg-gray-50 text-text-secondary">
+    <!-- Navigation -->
+    <nav class="glass-nav shadow-xl sticky top-0 w-full z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <span class="text-2xl font-display font-bold text-gradient">Forward Horizon</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-text-secondary hover:text-primary transition-all duration-300">
+                        <i class="fas fa-arrow-left mr-2"></i>Back to Home
+                    </a>
+                    <a href="application.html" class="bg-gradient-to-r from-primary to-primary-dark text-white px-6 py-3 rounded-xl font-display font-bold shadow-lg">
+                        Apply Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-primary via-primary-dark to-secondary py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center text-white">
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+                Questions You Might Have
+            </h1>
+            <p class="font-body text-xl sm:text-2xl text-blue-100">
+                We understand you need answers before taking that brave first step. Here's what others have asked.
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item glass-card p-8 rounded-2xl shadow-lg">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4 flex items-center">
+                        <i class="fas fa-clipboard-list text-secondary mr-3"></i>
+                        What's the application process for housing?
+                    </h3>
+                    <p class="font-body text-text-secondary leading-relaxed">
+                        Our streamlined application process includes completing our online form, participating in a brief interview, and providing basic documentation. We work with you every step of the way to ensure a smooth transition into our community.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item glass-card p-8 rounded-2xl shadow-lg">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4 flex items-center">
+                        <i class="fas fa-calendar-alt text-secondary mr-3"></i>
+                        How long can residents stay in transitional housing?
+                    </h3>
+                    <p class="font-body text-text-secondary leading-relaxed">
+                        Our transitional housing programs typically range from 6 months to 2 years, depending on individual progress and program type. We focus on helping you achieve sustainable independence at your own pace.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item glass-card p-8 rounded-2xl shadow-lg">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4 flex items-center">
+                        <i class="fas fa-hands-helping text-secondary mr-3"></i>
+                        What support services are included?
+                    </h3>
+                    <p class="font-body text-text-secondary leading-relaxed">
+                        Our comprehensive services include 24/7 on-site support staff, individual and group counseling, case management, life skills training, job placement assistance, transportation help, and medical referrals.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item glass-card p-8 rounded-2xl shadow-lg">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4 flex items-center">
+                        <i class="fas fa-gavel text-secondary mr-3"></i>
+                        What are the house rules and expectations?
+                    </h3>
+                    <p class="font-body text-text-secondary leading-relaxed">
+                        Our community guidelines promote safety, respect, and recovery. This includes maintaining sobriety, participating in required programs, contributing to household responsibilities, and treating all community members with dignity.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item glass-card p-8 rounded-2xl shadow-lg">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4 flex items-center">
+                        <i class="fas fa-dollar-sign text-secondary mr-3"></i>
+                        Is there a cost for housing services?
+                    </h3>
+                    <p class="font-body text-text-secondary leading-relaxed">
+                        Our programs are designed to be affordable and accessible. Costs vary by program, and we work with residents to develop payment plans. Many services are covered through partnerships with local agencies and organizations.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item glass-card p-8 rounded-2xl shadow-lg">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4 flex items-center">
+                        <i class="fas fa-star text-secondary mr-3"></i>
+                        What makes Forward Horizon different from other programs?
+                    </h3>
+                    <p class="font-body text-text-secondary leading-relaxed">
+                        We focus on individualized care, community building, and long-term success. Our experienced staff, peer support model, and comprehensive wrap-around services create an environment where healing and growth naturally occur.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 7 -->
+                <div class="faq-item glass-card p-8 rounded-2xl shadow-lg">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4 flex items-center">
+                        <i class="fas fa-medal text-secondary mr-3"></i>
+                        Do you accept veterans with PTSD or other conditions?
+                    </h3>
+                    <p class="font-body text-text-secondary leading-relaxed">
+                        Absolutely. We specialize in serving veterans with various conditions including PTSD, TBI, and substance use disorders. Our staff is trained in trauma-informed care and veteran-specific challenges and strengths.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 8 -->
+                <div class="faq-item glass-card p-8 rounded-2xl shadow-lg">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4 flex items-center">
+                        <i class="fas fa-suitcase text-secondary mr-3"></i>
+                        Can I bring my belongings and personal items?
+                    </h3>
+                    <p class="font-body text-text-secondary leading-relaxed">
+                        Yes, residents are encouraged to bring personal belongings that help make their space feel like home. We provide secure storage and work with you to ensure your important items are safely kept during your stay.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 9 -->
+                <div class="faq-item glass-card p-8 rounded-2xl shadow-lg">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4 flex items-center">
+                        <i class="fas fa-heart text-secondary mr-3"></i>
+                        What happens if I relapse or have a setback?
+                    </h3>
+                    <p class="font-body text-text-secondary leading-relaxed">
+                        Recovery is a journey with ups and downs. We provide compassionate support during difficult times, connecting you with appropriate resources and working together to get back on track. Your success is our priority.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 10 -->
+                <div class="faq-item glass-card p-8 rounded-2xl shadow-lg">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4 flex items-center">
+                        <i class="fas fa-briefcase text-secondary mr-3"></i>
+                        How do you help with employment and job training?
+                    </h3>
+                    <p class="font-body text-text-secondary leading-relaxed">
+                        We offer comprehensive employment support including resume building, interview preparation, job search assistance, skills training, and connections with local employers. Our goal is to help you achieve financial independence.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 11 - Additional -->
+                <div class="faq-item glass-card p-8 rounded-2xl shadow-lg">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4 flex items-center">
+                        <i class="fas fa-clock text-secondary mr-3"></i>
+                        What are your intake hours?
+                    </h3>
+                    <p class="font-body text-text-secondary leading-relaxed">
+                        Our intake team is available Monday through Friday, 9am-5pm PST. However, if you're in crisis or need immediate assistance, please call our 24-hour support line at (310) 488-5280.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 12 - Additional -->
+                <div class="faq-item glass-card p-8 rounded-2xl shadow-lg">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4 flex items-center">
+                        <i class="fas fa-map-marker-alt text-secondary mr-3"></i>
+                        Where are your facilities located?
+                    </h3>
+                    <p class="font-body text-text-secondary leading-relaxed">
+                        Our transitional housing facilities are located throughout Los Angeles County in safe, residential neighborhoods with access to public transportation, healthcare, and employment opportunities.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ CTA -->
+            <div class="text-center mt-16">
+                <div class="glass-card p-10 rounded-3xl max-w-2xl mx-auto bg-gradient-to-br from-blue-50 to-indigo-50">
+                    <h3 class="font-display text-3xl font-bold text-primary mb-4">Still Have Questions?</h3>
+                    <p class="font-body text-text-secondary mb-8 leading-relaxed text-lg">
+                        Every person's situation is unique. Our caring team is here to provide personalized answers and help you understand exactly how we can support your journey.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="index.html#contact" class="btn-enhanced bg-gradient-to-r from-primary to-primary-dark text-white px-8 py-4 rounded-xl font-display font-bold shadow-lg inline-flex items-center justify-center space-x-2">
+                            <i class="fas fa-phone"></i>
+                            <span>Talk to Our Team</span>
+                        </a>
+                        <a href="application.html" class="btn-enhanced border-2 border-primary text-primary bg-white px-8 py-4 rounded-xl font-display font-bold inline-flex items-center justify-center space-x-2 hover:bg-primary hover:text-white transition-all">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>Start Application</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="mb-4">© 2024 Forward Horizon. All rights reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="index.html" class="text-gray-400 hover:text-white">Home</a>
+                <a href="application.html" class="text-gray-400 hover:text-white">Apply Now</a>
+                <a href="index.html#contact" class="text-gray-400 hover:text-white">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
