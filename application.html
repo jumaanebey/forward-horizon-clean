@@ -382,8 +382,44 @@
         // Form submission
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            // Add your form submission logic here
-            alert('Thank you for your application! We will contact you within 24 hours.');
+            
+            // Show loading state
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Submitting...';
+            submitButton.disabled = true;
+            
+            // Collect form data
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            data.formType = 'application';
+            
+            try {
+                // Submit to API
+                const response = await fetch('/api/submit-form', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Redirect to success page
+                    window.location.href = '/application-success.html';
+                } else {
+                    throw new Error(result.error || 'Submission failed');
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                alert('There was an error submitting your application. Please call us at (310) 488-5280');
+                
+                // Reset button
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }
         });
     </script>
 </body>

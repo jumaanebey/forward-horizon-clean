@@ -1,0 +1,86 @@
+{
+  "name": "Forward Horizon Contact Form",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "forward-horizon-forms",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-1",
+      "name": "Contact Form Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "forward-horizon-forms"
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "sendTo": "={{ $json.body.email }}",
+        "subject": "Thank you for contacting Forward Horizon",
+        "emailType": "text",
+        "message": "=Dear {{ $json.body.name }},\n\nThank you for reaching out to Forward Horizon. We have received your {{ $json.body.formType || 'contact' }} submission.\n\nYour Message:\n\"{{ $json.body.message }}\"\n\nWhat happens next:\n• Our team will review your inquiry within 24 hours\n• You'll receive a call or email from our admissions team\n• If urgent, please call us directly at (310) 488-5280\n\nWe're here to support you on your journey to stability and independence.\n\nWith hope and support,\nThe Forward Horizon Team\n\n--\nForward Horizon\nTransitional Housing for Veterans, Recovery & Reentry\nPhone: (310) 488-5280\nEmail: admin@theforwardhorizon.com\nWebsite: https://theforwardhorizon.com"
+      },
+      "id": "gmail-1",
+      "name": "Send Confirmation Email",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [460, 300],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "gmail-cred",
+          "name": "Gmail Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "responseCode": 200,
+        "responseBody": "={{ { \"success\": true, \"message\": \"Thank you! We'll contact you within 24 hours.\", \"timestamp\": $now } }}"
+      },
+      "id": "response-1",
+      "name": "Send Success Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [680, 300]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Contact Form Webhook": {
+      "main": [
+        [
+          {
+            "node": "Send Confirmation Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Confirmation Email": {
+      "main": [
+        [
+          {
+            "node": "Send Success Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "forward-horizon-contact-form",
+  "tags": []
+}

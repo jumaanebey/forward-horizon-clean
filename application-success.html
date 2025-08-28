@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Received - Forward Horizon</title>
+    <meta name="description" content="Your application has been successfully submitted to Forward Horizon transitional housing.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#667eea',
+                        'primary-dark': '#5a67d8',
+                        secondary: '#764ba2',
+                        accent: '#f59e0b'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .check-animation {
+            animation: checkmark 0.8s ease-out;
+        }
+        @keyframes checkmark {
+            0% {
+                transform: scale(0) rotate(45deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2) rotate(45deg);
+            }
+            100% {
+                transform: scale(1) rotate(45deg);
+                opacity: 1;
+            }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Success Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <!-- Success Checkmark -->
+            <div class="mb-8 inline-block">
+                <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center check-animation">
+                    <i class="fas fa-check text-5xl text-green-500"></i>
+                </div>
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 fade-in">
+                Application Received!
+            </h1>
+            <p class="text-xl opacity-90 mb-8 fade-in" style="animation-delay: 0.2s;">
+                Thank you for taking this important step toward stability and independence.
+            </p>
+        </div>
+    </section>
+
+    <!-- What Happens Next -->
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+                    What Happens Next?
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Timeline Steps -->
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                                1
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                                Application Review (24-48 hours)
+                            </h3>
+                            <p class="text-gray-600">
+                                Our admissions team will carefully review your application and assess how we can best support your needs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                                2
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                                Phone Screening
+                            </h3>
+                            <p class="text-gray-600">
+                                We'll call you to discuss your situation, answer questions, and schedule an in-person assessment if appropriate.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                                3
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                                In-Person Assessment
+                            </h3>
+                            <p class="text-gray-600">
+                                Meet with our team, tour the facility, and ensure Forward Horizon is the right fit for your journey.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                                4
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                                Move-In Coordination
+                            </h3>
+                            <p class="text-gray-600">
+                                If approved, we'll work with you to coordinate your move-in date and help you get settled.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Urgent Notice -->
+                <div class="mt-8 p-6 bg-amber-50 border-l-4 border-amber-500 rounded-lg">
+                    <div class="flex items-start">
+                        <i class="fas fa-exclamation-triangle text-amber-500 mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-1">Need Immediate Assistance?</h4>
+                            <p class="text-gray-700">
+                                If you're facing an emergency housing situation, please call us directly at 
+                                <a href="tel:3104885280" class="font-bold text-primary hover:underline">(310) 488-5280</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">
+                Helpful Resources While You Wait
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Program Guide -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-file-pdf text-3xl text-red-500"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2">Program Guide</h3>
+                            <p class="text-gray-600 mb-4">
+                                Download our comprehensive guide to understand what to expect during your stay.
+                            </p>
+                            <a href="/downloads/forward-horizon-program-guide.pdf" 
+                               class="inline-flex items-center text-primary hover:text-primary-dark font-semibold">
+                                <i class="fas fa-download mr-2"></i>
+                                Download PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preparation Checklist -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-clipboard-check text-3xl text-green-500"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2">Preparation Checklist</h3>
+                            <p class="text-gray-600 mb-4">
+                                Get ready for your potential move-in with our helpful preparation checklist.
+                            </p>
+                            <a href="/downloads/preparation-checklist.pdf" 
+                               class="inline-flex items-center text-primary hover:text-primary-dark font-semibold">
+                                <i class="fas fa-download mr-2"></i>
+                                Download Checklist
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Document -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-question-circle text-3xl text-blue-500"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2">Frequently Asked Questions</h3>
+                            <p class="text-gray-600 mb-4">
+                                Find answers to common questions about our program and facilities.
+                            </p>
+                            <a href="/faq.html" 
+                               class="inline-flex items-center text-primary hover:text-primary-dark font-semibold">
+                                <i class="fas fa-arrow-right mr-2"></i>
+                                View FAQ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Resources -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-hands-helping text-3xl text-purple-500"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2">Community Resources</h3>
+                            <p class="text-gray-600 mb-4">
+                                Additional support services available in Los Angeles County.
+                            </p>
+                            <a href="/downloads/community-resources.pdf" 
+                               class="inline-flex items-center text-primary hover:text-primary-dark font-semibold">
+                                <i class="fas fa-download mr-2"></i>
+                                Download Resources
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="bg-gradient-to-r from-primary to-secondary text-white rounded-2xl p-8 md:p-12">
+                <h2 strations during our  regular phone screening session? class="text-3xl font-bold mb-4">Questions Before Your Phone Screening?</h2>
+                <p class="text-xl opacity-90 mb-8">
+                    We're here to help. Don't hesitate to reach out.
+                </p>
+                
+                <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
+                    <a href="tel:3104885280" class="inline-flex items-center bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                        <i class="fas fa-phone mr-2"></i>
+                        Call (310) 488-5280
+                    </a>
+                    <a href="mailto:admin@theforwardhorizon.com" class="inline-flex items-center bg-white/20 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/30 transition">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Email Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="py-8 text-center">
+        <a href="/" class="inline-flex items-center text-primary hover:text-primary-dark font-semibold">
+            <i class="fas fa-arrow-left mr-2"></i>
+            Return to Homepage
+        </a>
+    </div>
+
+    <script>
+        // Check if coming from application form
+        if (document.referrer.includes('application.html')) {
+            // Add confirmation message to localStorage for tracking
+            localStorage.setItem('applicationSubmitted', new Date().toISOString());
+        }
+
+        // Confetti animation (optional fun addition)
+        function createConfetti() {
+            const colors = ['#667eea', '#764ba2', '#f59e0b', '#10b981'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.cssText = `
+                    position: fixed;
+                    width: 10px;
+                    height: 10px;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    top: -10px;
+                    left: ${Math.random() * 100}%;
+                    animation: fall ${2 + Math.random() * 3}s linear;
+                    z-index: 9999;
+                `;
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        // Add falling animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Trigger confetti on load
+        setTimeout(createConfetti, 500);
+    </script>
+</body>
+</html>
