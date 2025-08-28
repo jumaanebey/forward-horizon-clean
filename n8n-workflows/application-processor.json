@@ -1,0 +1,215 @@
+{
+  "name": "Forward Horizon - Application Processor",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "forward-horizon",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "name": "Webhook - Receive Form",
+      "type": "n8n-nodes-base.webhook",
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"formType\"]}}",
+              "value2": "application"
+            }
+          ]
+        }
+      },
+      "name": "Is Application?",
+      "type": "n8n-nodes-base.if",
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "fromEmail": "theforwardhorizon@gmail.com",
+        "toEmail": "={{$json[\"email\"]}}",
+        "subject": "Application Received - Forward Horizon",
+        "html": "<h2>Thank you for your application, {{$json[\"name\"]}}!</h2><p>We have received your application for transitional housing. Our admissions team will review it carefully and contact you within 48 hours.</p><p><strong>What happens next:</strong></p><ul><li>Application review (24-48 hours)</li><li>Phone screening</li><li>In-person assessment</li><li>Move-in coordination</li></ul><p>If you have urgent housing needs, please call us immediately at (310) 488-5280.</p><p>With hope and support,<br>The Forward Horizon Team</p>"
+      },
+      "name": "Send Confirmation Email",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [650, 200]
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "append",
+        "sheetId": "YOUR_GOOGLE_SHEET_ID",
+        "range": "Applications!A:Z",
+        "keyRow": 1,
+        "dataStartRow": 2,
+        "columnToMatchOn": "email",
+        "options": {}
+      },
+      "name": "Log to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [650, 400]
+    },
+    {
+      "parameters": {
+        "message": "🚨 New Application Alert\n\nName: {{$json[\"name\"]}}\nEmail: {{$json[\"email\"]}}\nPhone: {{$json[\"phone\"]}}\nProgram: {{$json[\"program\"]}}\n\nUrgency: {{$json[\"urgency\"]}}\n\nLogin to review: https://theforwardhorizon.com/admin",
+        "toNumber": "+13104885280",
+        "options": {}
+      },
+      "name": "SMS Alert to Staff",
+      "type": "n8n-nodes-base.twilio",
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "channel": "#applications",
+        "text": "New Application Received",
+        "attachments": [
+          {
+            "color": "#667eea",
+            "fields": [
+              {
+                "title": "Applicant",
+                "value": "{{$json[\"name\"]}}",
+                "short": true
+              },
+              {
+                "title": "Contact",
+                "value": "{{$json[\"email\"]}}\n{{$json[\"phone\"]}}",
+                "short": true
+              },
+              {
+                "title": "Program Interest",
+                "value": "{{$json[\"program\"]}}",
+                "short": true
+              },
+              {
+                "title": "Urgency",
+                "value": "{{$json[\"urgency\"]}}",
+                "short": true
+              }
+            ]
+          }
+        ]
+      },
+      "name": "Post to Slack",
+      "type": "n8n-nodes-base.slack",
+      "position": [850, 500]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "status",
+              "value": "success"
+            },
+            {
+              "name": "message",
+              "value": "Application received and processed successfully"
+            }
+          ]
+        }
+      },
+      "name": "Return Success",
+      "type": "n8n-nodes-base.set",
+      "position": [1050, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "responseCode": 200,
+        "options": {}
+      },
+      "name": "Webhook Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [1250, 300]
+    }
+  ],
+  "connections": {
+    "Webhook - Receive Form": {
+      "main": [
+        [
+          {
+            "node": "Is Application?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Application?": {
+      "main": [
+        [
+          {
+            "node": "Send Confirmation Email",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Log to Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Confirmation Email": {
+      "main": [
+        [
+          {
+            "node": "SMS Alert to Staff",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log to Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "SMS Alert to Staff",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SMS Alert to Staff": {
+      "main": [
+        [
+          {
+            "node": "Post to Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post to Slack": {
+      "main": [
+        [
+          {
+            "node": "Return Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Return Success": {
+      "main": [
+        [
+          {
+            "node": "Webhook Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
