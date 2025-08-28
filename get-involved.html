@@ -113,7 +113,33 @@
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
-    </style>
+    
+    /* Performance optimizations */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Preload critical fonts */
+    @font-face {
+      font-family: 'Inter';
+      font-display: swap;
+    }
+    
+    /* Reduce motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+</style>
 </head>
 <body class="font-body bg-gray-50 text-text-secondary">
     <!-- Navigation -->

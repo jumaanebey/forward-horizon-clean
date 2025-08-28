@@ -1,0 +1,45 @@
+name: Automated Backups
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Create backup
+      run: |
+        DATE=$(date +"%Y%m%d_%H%M%S")
+        mkdir -p backups
+        
+        # Create backup archive
+        tar -czf "backups/forward_horizon_$DATE.tar.gz" \
+          --exclude='node_modules' \
+          --exclude='.git' \
+          --exclude='backups' \
+          .
+          
+        echo "Backup created: forward_horizon_$DATE.tar.gz"
+        
+    - name: Upload backup artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: backup-${{ github.run_number }}
+        path: backups/
+        retention-days: 90
+
+    - name: Commit backup info
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        echo "Last backup: $(date)" > LAST_BACKUP.txt
+        git add LAST_BACKUP.txt
+        git commit -m "Update backup timestamp" || exit 0
+        git push

@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forward Horizon - Transitional Housing Los Angeles | Veterans, Recovery, Re-entry</title>
@@ -789,7 +794,33 @@
                 display: none !important;
             }
         }
-    </style>
+    
+    /* Performance optimizations */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Preload critical fonts */
+    @font-face {
+      font-family: 'Inter';
+      font-display: swap;
+    }
+    
+    /* Reduce motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+</style>
 </head>
 <body class="font-body bg-gray-50 text-text-secondary">
     <!-- Ultimate Professional Navigation -->

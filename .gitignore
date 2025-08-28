@@ -1,1 +1,18 @@
 .vercel
+
+# Backup files
+backups/
+*.tar.gz
+.env
+LAST_BACKUP.txt
+
+# Node modules and build files
+node_modules/
+.next/
+dist/
+build/
+
+# Environment and secrets
+.env.local
+.env.production
+*.log
