@@ -48,8 +48,29 @@
     {
       "source": "/resources/(.*)",
       "destination": "/resources/$1"
+    },
+    {
+      "source": "/api/generate-documents",
+      "destination": "/api/workflows/generate-documents"
+    },
+    {
+      "source": "/api/process-donation",
+      "destination": "/api/workflows/process-donation"
+    },
+    {
+      "source": "/api/appointments/:action",
+      "destination": "/api/workflows/appointments?action=$1"
+    },
+    {
+      "source": "/api/system-status",
+      "destination": "/api/workflows/system-status"
     }
   ],
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "functions": {
+    "api/workflows/*.js": {
+      "maxDuration": 10
+    }
+  }
 }

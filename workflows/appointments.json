@@ -1,0 +1,24 @@
+{
+  "apt_1756440003533": {
+    "id": "apt_1756440003533",
+    "veteranName": "Sarah Thompson",
+    "email": "sarah@example.com",
+    "phone": "(555) 123-4567",
+    "appointmentType": "Initial Assessment",
+    "scheduledTime": "2025-02-01T14:00:00",
+    "status": "scheduled",
+    "createdAt": "2025-08-29T04:00:03.533Z",
+    "remindersSent": 0
+  },
+  "apt_1756440292218": {
+    "id": "apt_1756440292218",
+    "veteranName": "Local Test Appointment",
+    "email": "appointment@local.com",
+    "phone": "(555) 777-6666",
+    "appointmentType": "Placement Meeting",
+    "scheduledTime": "2025-03-01T15:30:00",
+    "status": "scheduled",
+    "createdAt": "2025-08-29T04:04:52.218Z",
+    "remindersSent": 0
+  }
+}

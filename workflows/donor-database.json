@@ -1,0 +1,30 @@
+{
+  "john@example.com": {
+    "name": "John Philanthropist",
+    "email": "john@example.com",
+    "firstDonation": "2025-08-29T03:59:47.214Z",
+    "totalDonated": 500,
+    "donationHistory": [
+      {
+        "amount": 500,
+        "date": "2025-08-29T03:59:47.214Z",
+        "type": "general"
+      }
+    ],
+    "lastDonation": "2025-08-29T03:59:47.214Z"
+  },
+  "donor@local.com": {
+    "name": "Local Test Donor",
+    "email": "donor@local.com",
+    "firstDonation": "2025-08-29T04:04:33.878Z",
+    "totalDonated": 2500,
+    "donationHistory": [
+      {
+        "amount": 2500,
+        "date": "2025-08-29T04:04:33.878Z",
+        "type": "major"
+      }
+    ],
+    "lastDonation": "2025-08-29T04:04:33.878Z"
+  }
+}
