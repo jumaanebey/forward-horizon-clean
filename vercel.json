@@ -51,25 +51,21 @@
     },
     {
       "source": "/api/generate-documents",
-      "destination": "/api/workflows/generate-documents"
+      "destination": "/api/documents"
     },
     {
       "source": "/api/process-donation",
-      "destination": "/api/workflows/process-donation"
-    },
-    {
-      "source": "/api/appointments/:action",
-      "destination": "/api/workflows/appointments?action=$1"
+      "destination": "/api/donations"
     },
     {
       "source": "/api/system-status",
-      "destination": "/api/workflows/system-status"
+      "destination": "/api/status"
     }
   ],
   "cleanUrls": true,
   "trailingSlash": false,
   "functions": {
-    "api/workflows/*.js": {
+    "api/*.js": {
       "maxDuration": 10
     }
   }
