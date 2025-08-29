@@ -60,6 +60,22 @@
     {
       "source": "/api/system-status",
       "destination": "/api/status"
+    },
+    {
+      "source": "/api/volunteers/(.*)",
+      "destination": "/api/automation?system=volunteers&action=$1"
+    },
+    {
+      "source": "/api/crisis/(.*)",
+      "destination": "/api/automation?system=crisis&action=$1"
+    },
+    {
+      "source": "/api/beds/(.*)",
+      "destination": "/api/automation?system=beds&action=$1"
+    },
+    {
+      "source": "/api/social/(.*)",
+      "destination": "/api/automation?system=social&action=$1"
     }
   ],
   "cleanUrls": true,
