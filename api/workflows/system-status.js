@@ -1,4 +1,3 @@
-
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
@@ -12,13 +11,13 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Check system health
+  // System health check
   const status = {
     status: 'healthy',
     timestamp: new Date().toISOString(),
     services: {
       documentGenerator: 'active',
-      donorAutomation: 'active',
+      donorAutomation: 'active', 
       appointmentSystem: 'active'
     },
     environment: process.env.NODE_ENV || 'production',
