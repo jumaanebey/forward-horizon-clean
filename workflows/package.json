@@ -1,0 +1,29 @@
+{
+  "name": "forward-horizon-workflows",
+  "version": "1.0.0",
+  "description": "Forward Horizon automated workflows for document generation, appointments, and donor management",
+  "type": "module",
+  "main": "document-generator.js",
+  "scripts": {
+    "start": "node document-generator.js",
+    "dev": "nodemon document-generator.js",
+    "test": "node test-workflows.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^6.10.1",
+    "puppeteer": "^21.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "keywords": [
+    "veterans",
+    "transitional-housing",
+    "document-automation",
+    "n8n-workflows"
+  ],
+  "author": "Forward Horizon",
+  "license": "MIT"
+}
