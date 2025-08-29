@@ -19,7 +19,16 @@ export default function handler(req, res) {
         if (!firstName || !lastName || !email) {
           return res.status(400).json({
             success: false,
-            error: 'Missing required fields: firstName, lastName, email'
+            error: 'Missing required fields: firstName, lastName, email',
+            received: { firstName: !!firstName, lastName: !!lastName, email: !!email },
+            example: {
+              firstName: 'John',
+              lastName: 'Smith', 
+              email: 'john@email.com',
+              phone: '(555) 123-4567',
+              skills: ['Counseling', 'Event Planning'],
+              availability: 'Weekends'
+            }
           });
         }
 
@@ -89,7 +98,24 @@ export default function handler(req, res) {
         if (!reporterName || !residentName || !incidentType || !severity) {
           return res.status(400).json({
             success: false,
-            error: 'Missing required fields: reporterName, residentName, incidentType, severity'
+            error: 'Missing required fields: reporterName, residentName, incidentType, severity',
+            received: { 
+              reporterName: !!reporterName, 
+              residentName: !!residentName, 
+              incidentType: !!incidentType, 
+              severity: !!severity 
+            },
+            validValues: {
+              incidentType: ['medical', 'mental-health', 'behavioral', 'safety', 'other'],
+              severity: ['low', 'medium', 'high', 'critical']
+            },
+            example: {
+              reporterName: 'Staff Member',
+              residentName: 'John D.',
+              incidentType: 'behavioral',
+              severity: 'medium',
+              description: 'Brief description of incident'
+            }
           });
         }
 

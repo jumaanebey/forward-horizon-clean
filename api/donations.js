@@ -15,13 +15,41 @@ export default function handler(req, res) {
       if (!donorName || !email || !amount) {
         return res.status(400).json({
           success: false,
-          error: 'Missing required fields: donorName, email, amount'
+          error: 'Missing required fields: donorName, email, amount',
+          received: { donorName: !!donorName, email: !!email, amount: !!amount },
+          example: {
+            donorName: 'Sarah Johnson',
+            email: 'sarah@email.com',
+            amount: '100'
+          },
+          help: 'Use /api/docs?section=core-apis for complete documentation'
+        });
+      }
+
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        return res.status(400).json({
+          success: false,
+          error: 'Invalid email format',
+          received: email,
+          example: 'sarah@email.com'
+        });
+      }
+
+      // Validate amount
+      const donationAmount = parseFloat(amount);
+      if (isNaN(donationAmount) || donationAmount <= 0) {
+        return res.status(400).json({
+          success: false,
+          error: 'Invalid donation amount',
+          received: amount,
+          example: '100'
         });
       }
 
       // Generate receipt number
       const receiptNumber = `FH-${Date.now()}`;
-      const donationAmount = parseFloat(amount);
       
       const documents = {
         thankYouLetter: {

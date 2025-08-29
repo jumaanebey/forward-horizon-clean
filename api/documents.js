@@ -18,7 +18,26 @@ export default function handler(req, res) {
     if (!name || !email) {
       return res.status(400).json({
         success: false,
-        error: 'Missing required fields: name and email'
+        error: 'Missing required fields: name and email',
+        received: { name: !!name, email: !!email, phone: !!phone, moveInDate: !!moveInDate },
+        example: {
+          name: 'John Smith',
+          email: 'john@email.com',
+          phone: '(555) 123-4567',
+          moveInDate: '2025-03-15'
+        },
+        help: 'Use /api/docs for complete documentation'
+      });
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid email format',
+        received: email,
+        example: 'john@email.com'
       });
     }
 
