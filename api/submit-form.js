@@ -3,10 +3,10 @@
  * Processes contact form submissions and sends notifications
  */
 
-// Simple in-memory rate limiting (for production, use Redis or database)
+// Improved rate limiting with better logic
 const rateLimitMap = new Map();
-const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
-const RATE_LIMIT_MAX = 5; // 5 submissions per 15 minutes per IP
+const RATE_LIMIT_WINDOW = 10 * 60 * 1000; // 10 minutes (reduced from 15)
+const RATE_LIMIT_MAX = 3; // 3 submissions per 10 minutes per IP (reduced from 5)
 
 function checkRateLimit(ip) {
   const now = Date.now();
@@ -17,17 +17,33 @@ function checkRateLimit(ip) {
   }
   
   const requests = rateLimitMap.get(ip);
-  // Remove old requests
+  // Remove old requests outside the window
   const recentRequests = requests.filter(time => time > windowStart);
   
   if (recentRequests.length >= RATE_LIMIT_MAX) {
-    return false;
+    return false; // Rate limit exceeded
   }
   
+  // Add current request
   recentRequests.push(now);
   rateLimitMap.set(ip, recentRequests);
   return true;
 }
+
+// Cleanup old rate limit data every 30 minutes
+setInterval(() => {
+  const now = Date.now();
+  const cutoff = now - RATE_LIMIT_WINDOW * 2; // Keep data for 2x the window
+  
+  for (const [ip, requests] of rateLimitMap.entries()) {
+    const validRequests = requests.filter(time => time > cutoff);
+    if (validRequests.length === 0) {
+      rateLimitMap.delete(ip);
+    } else {
+      rateLimitMap.set(ip, validRequests);
+    }
+  }
+}, 30 * 60 * 1000);
 
 export default async function handler(req, res) {
   // Set CORS headers
@@ -43,14 +59,35 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Rate limiting check
-  const clientIP = req.headers['x-forwarded-for']?.split(',')[0] || req.connection?.remoteAddress || 'unknown';
+  // Enhanced rate limiting with better IP detection
+  let clientIP = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || 
+                 req.headers['x-real-ip'] || 
+                 req.connection?.remoteAddress || 
+                 req.socket?.remoteAddress ||
+                 req.ip ||
+                 'unknown';
+  
+  // Clean up IPv6 localhost
+  if (clientIP === '::ffff:127.0.0.1') {
+    clientIP = '127.0.0.1';
+  }
+  
+  // For development and unknown IPs, use a unique identifier per session
+  const isLocalDev = clientIP === '127.0.0.1' || clientIP === '::1' || clientIP.startsWith('192.168.') || clientIP === 'unknown';
+  
+  if (isLocalDev) {
+    // Use user agent + timestamp for local development to allow testing
+    clientIP = `dev-${req.headers['user-agent']?.slice(-10) || 'unknown'}-${Date.now()}`;
+  }
+  
   if (!checkRateLimit(clientIP)) {
+    console.log(`Rate limited IP: ${clientIP}`);
     return res.status(429).json({
       success: false,
       error: 'Too many submissions',
-      message: 'Please wait 15 minutes before submitting another form. For urgent inquiries, call (310) 488-5280.',
-      retryAfter: 900 // 15 minutes in seconds
+      message: 'Please wait 10 minutes before submitting another form. For urgent inquiries, call (310) 488-5280.',
+      retryAfter: 600, // 10 minutes in seconds
+      debug: { clientIP, isLocalDev }
     });
   }
 

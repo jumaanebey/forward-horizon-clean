@@ -27,10 +27,15 @@ export default async function handler(req, res) {
   try {
     const { to, subject, body, html } = req.body;
     
-    if (!to || !subject || !body) {
+    if (!to?.trim() || !subject?.trim() || !body?.trim()) {
       return res.status(400).json({
         success: false,
-        error: 'Missing required fields: to, subject, body'
+        error: 'Missing required fields: to, subject, body',
+        received: {
+          to: !!to?.trim(),
+          subject: !!subject?.trim(), 
+          body: !!body?.trim()
+        }
       });
     }
 

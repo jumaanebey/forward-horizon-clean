@@ -2026,10 +2026,11 @@
                         message = 'Please enter a valid email address';
                     }
                 } else if (field.type === 'tel' && field.value) {
-                    const phoneRegex = /^[\d\s\-\(\)\+]+$/;
-                    if (!phoneRegex.test(field.value) || field.value.replace(/\D/g, '').length < 10) {
+                    const phoneRegex = /^[\d\s\-\(\)\+\.]+$/;
+                    const digitsOnly = field.value.replace(/\D/g, '');
+                    if (!phoneRegex.test(field.value) || (digitsOnly.length < 10 || digitsOnly.length > 15)) {
                         isValid = false;
-                        message = 'Please enter a valid phone number';
+                        message = 'Please enter a valid phone number (10-15 digits)';
                     }
                 }
                 
@@ -2174,9 +2175,23 @@
             });
         }
 
+        // Browser compatibility check
+        const isModernBrowser = (function() {
+            try {
+                new Function('const test = {}; return test?.prop');
+                return true;
+            } catch (e) {
+                return false;
+            }
+        })();
+
+        if (!isModernBrowser) {
+            console.warn('This browser may not support all features. Please update your browser for the best experience.');
+        }
+
         // Register Service Worker for offline functionality and caching
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', async () => {
+        if ('serviceWorker' in navigator && isModernBrowser) {
+            window.addEventListener('load', async function() {
                 try {
                     const registration = await navigator.serviceWorker.register('/sw.js', {
                         scope: '/'
