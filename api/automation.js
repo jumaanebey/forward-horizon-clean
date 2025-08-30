@@ -58,8 +58,6 @@ export default async function handler(req, res) {
     });
   }
 
-  const { system, action } = req.query;
-
   // VOLUNTEER MANAGEMENT SYSTEM
   // Add cache control headers for GET requests
   if (req.method === 'GET') {

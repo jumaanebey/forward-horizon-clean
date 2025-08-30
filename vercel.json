@@ -84,5 +84,11 @@
     "api/*.js": {
       "maxDuration": 10
     }
-  }
+  },
+  "builds": [
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
+    }
+  ]
 }
