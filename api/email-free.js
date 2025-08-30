@@ -1,3 +1,15 @@
+// Utility function for API retry logic
+async function apiRetry(fn, maxRetries = 3, delay = 1000) {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      return await fn();
+    } catch (error) {
+      if (i === maxRetries - 1) throw error;
+      await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
+    }
+  }
+}
+
 export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -22,9 +34,12 @@ export default async function handler(req, res) {
       });
     }
 
-    // Option 1: Try Web3Forms first (we have a key configured)
+    // Option 1: Try Web3Forms first (we have a key configured) with retry logic
     try {
-      const result = await sendViaWeb3Forms({ to, subject, body, html });
+      const result = await apiRetry(async () => {
+        return await sendViaWeb3Forms({ to, subject, body, html });
+      });
+      
       if (result && result.success) {
         return res.status(200).json({
           success: true,
@@ -36,7 +51,7 @@ export default async function handler(req, res) {
         });
       }
     } catch (error) {
-      console.log('Web3Forms failed, trying next option:', error.message);
+      console.log('Web3Forms failed after retries, trying next option:', error.message);
     }
 
     // Option 2: Use Resend Free Tier (3,000 emails/month free)

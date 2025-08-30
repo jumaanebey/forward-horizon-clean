@@ -3,6 +3,32 @@
  * Processes contact form submissions and sends notifications
  */
 
+// Simple in-memory rate limiting (for production, use Redis or database)
+const rateLimitMap = new Map();
+const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
+const RATE_LIMIT_MAX = 5; // 5 submissions per 15 minutes per IP
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  const windowStart = now - RATE_LIMIT_WINDOW;
+  
+  if (!rateLimitMap.has(ip)) {
+    rateLimitMap.set(ip, []);
+  }
+  
+  const requests = rateLimitMap.get(ip);
+  // Remove old requests
+  const recentRequests = requests.filter(time => time > windowStart);
+  
+  if (recentRequests.length >= RATE_LIMIT_MAX) {
+    return false;
+  }
+  
+  recentRequests.push(now);
+  rateLimitMap.set(ip, recentRequests);
+  return true;
+}
+
 export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -15,6 +41,17 @@ export default async function handler(req, res) {
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  // Rate limiting check
+  const clientIP = req.headers['x-forwarded-for']?.split(',')[0] || req.connection?.remoteAddress || 'unknown';
+  if (!checkRateLimit(clientIP)) {
+    return res.status(429).json({
+      success: false,
+      error: 'Too many submissions',
+      message: 'Please wait 15 minutes before submitting another form. For urgent inquiries, call (310) 488-5280.',
+      retryAfter: 900 // 15 minutes in seconds
+    });
   }
 
   try {
@@ -187,54 +224,69 @@ export default async function handler(req, res) {
   }
 }
 
+// Optimized email template with cached base template
+const EMAIL_BASE_TEMPLATE = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 0 auto; }
+    .header { background: linear-gradient(135deg, #2c5530 0%, #1e3a1e 100%); color: white; padding: 25px; text-align: center; }
+    .content { background: white; padding: 25px; }
+    .footer { background: #f8f9fa; padding: 15px; text-align: center; font-size: 12px; color: #666; }
+    .info-box { background: #f0f9ff; padding: 15px; border-left: 4px solid #2c5530; margin: 15px 0; border-radius: 4px; }
+    .btn { display: inline-block; background: #2c5530; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin: 10px 0; }
+    ul { padding-left: 20px; }
+    li { margin: 8px 0; }
+    h1 { margin: 0; font-size: 24px; }
+    h2 { color: #2c5530; margin-top: 0; }
+    h3 { color: #2c5530; }
+    @media (max-width: 600px) {
+      .container { width: 100% !important; }
+      .header, .content, .footer { padding: 15px !important; }
+    }
+  </style>
+</head>
+<body>{{BODY_CONTENT}}</body>
+</html>`;
+
 function generateConfirmationEmail(data) {
-  return `
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <meta charset="UTF-8">
-      <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        .header { background: #2c5530; color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
-        .content { background: white; padding: 30px; border: 1px solid #e0e0e0; }
-        .footer { background: #f8f9fa; padding: 20px; text-align: center; border-radius: 0 0 8px 8px; }
-        .info-box { background: #f0f9ff; padding: 15px; border-left: 4px solid #2c5530; margin: 20px 0; }
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        <div class="header">
-          <h1>🏠 Thank You for Contacting Forward Horizon</h1>
-        </div>
-        <div class="content">
-          <h2>Hello ${data.name.split(' ')[0]},</h2>
-          <p>We have received your message and appreciate you reaching out to Forward Horizon.</p>
-          
-          <div class="info-box">
-            <h3>Your Submission Details:</h3>
-            <p><strong>Service Requested:</strong> ${data.service}</p>
-            <p><strong>Your Message:</strong><br>${data.message.replace(/\n/g, '<br>')}</p>
-          </div>
-          
-          <h3>What Happens Next?</h3>
-          <ul>
-            <li>Our team will review your message within 24 hours</li>
-            <li>We'll contact you via email or phone with next steps</li>
-            <li>If urgent, please call us at (310) 488-5280</li>
-          </ul>
-          
-          <p><strong>We're here to support you on your journey!</strong></p>
-        </div>
-        <div class="footer">
-          <p><strong>Forward Horizon Transitional Housing</strong><br>
-          Los Angeles, CA<br>
-          (310) 488-5280 | info@theforwardhorizon.com</p>
-        </div>
+  const firstName = data.name.split(' ')[0];
+  const bodyContent = `
+    <div class="container">
+      <div class="header">
+        <h1>🏠 Thank You for Contacting Forward Horizon</h1>
       </div>
-    </body>
-    </html>
-  `;
+      <div class="content">
+        <h2>Hello ${firstName},</h2>
+        <p>We have received your message and appreciate you reaching out to Forward Horizon.</p>
+        
+        <div class="info-box">
+          <h3>Your Submission Details:</h3>
+          <p><strong>Service Requested:</strong> ${data.service}</p>
+          <p><strong>Your Message:</strong><br>${data.message.replace(/\n/g, '<br>')}</p>
+        </div>
+        
+        <h3>What Happens Next?</h3>
+        <ul>
+          <li>Our team will review your message within 24 hours</li>
+          <li>We'll contact you via email or phone with next steps</li>
+          <li>If urgent, please call us at (310) 488-5280</li>
+        </ul>
+        
+        <p><strong>We're here to support you on your journey!</strong></p>
+        <a href="tel:(310)488-5280" class="btn">📞 Call Us Now</a>
+      </div>
+      <div class="footer">
+        <p><strong>Forward Horizon Transitional Housing</strong><br>
+        Los Angeles, CA | (310) 488-5280 | info@theforwardhorizon.com</p>
+      </div>
+    </div>`;
+  
+  return EMAIL_BASE_TEMPLATE.replace('{{BODY_CONTENT}}', bodyContent);
 }
 
 function generateAdminNotification(data) {

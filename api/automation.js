@@ -1,4 +1,33 @@
 // Combined API endpoint for automation, health check, and other utilities
+// Simple in-memory cache for automation data
+const automationCache = new Map();
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+function getCachedData(key) {
+  const cached = automationCache.get(key);
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+    return cached.data;
+  }
+  return null;
+}
+
+function setCachedData(key, data) {
+  automationCache.set(key, {
+    data,
+    timestamp: Date.now()
+  });
+}
+
+// Clean expired cache entries periodically
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, value] of automationCache.entries()) {
+    if (now - value.timestamp >= CACHE_TTL) {
+      automationCache.delete(key);
+    }
+  }
+}, 60 * 1000); // Clean every minute
+
 export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -12,7 +41,22 @@ export default async function handler(req, res) {
   const { system, action } = req.query;
 
   // VOLUNTEER MANAGEMENT SYSTEM
+  // Add cache control headers for GET requests
+  if (req.method === 'GET') {
+    res.setHeader('Cache-Control', 'public, max-age=300, s-maxage=300'); // 5 minutes
+    res.setHeader('ETag', `"automation-${system}-${action}-v1"`);
+  }
+
   if (system === 'volunteers') {
+    const cacheKey = `volunteers-${action}`;
+    
+    // Check cache for GET requests
+    if (req.method === 'GET') {
+      const cachedData = getCachedData(cacheKey);
+      if (cachedData) {
+        return res.status(200).json(cachedData);
+      }
+    }
     if (req.method === 'POST' && action === 'register') {
       try {
         const { firstName, lastName, email, phone, skills, availability } = req.body;
