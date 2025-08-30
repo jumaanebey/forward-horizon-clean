@@ -77,13 +77,33 @@ export default async function handler(req, res) {
     }
     if (req.method === 'POST' && action === 'register') {
       try {
+        // Sanitize input to prevent XSS
+        const sanitizeInput = (input) => {
+          if (typeof input !== 'string') return input;
+          return input
+            .trim()
+            .replace(/[<>]/g, '') // Remove potential HTML tags
+            .replace(/['"]/g, '') // Remove quotes
+            .substring(0, 100); // Limit length
+        };
+
         const { firstName, lastName, email, phone, skills, availability } = req.body;
         
-        if (!firstName || !lastName || !email) {
+        // Sanitize all string inputs
+        const sanitizedData = {
+          firstName: sanitizeInput(firstName),
+          lastName: sanitizeInput(lastName), 
+          email: sanitizeInput(email),
+          phone: sanitizeInput(phone),
+          skills: Array.isArray(skills) ? skills.map(sanitizeInput) : [],
+          availability: sanitizeInput(availability)
+        };
+        
+        if (!sanitizedData.firstName || !sanitizedData.lastName || !sanitizedData.email) {
           return res.status(400).json({
             success: false,
             error: 'Missing required fields: firstName, lastName, email',
-            received: { firstName: !!firstName, lastName: !!lastName, email: !!email },
+            received: { firstName: !!sanitizedData.firstName, lastName: !!sanitizedData.lastName, email: !!sanitizedData.email },
             example: {
               firstName: 'John',
               lastName: 'Smith', 
@@ -98,13 +118,13 @@ export default async function handler(req, res) {
         const volunteerId = `VOL-${Date.now()}`;
         const volunteer = {
           id: volunteerId,
-          firstName,
-          lastName,
-          fullName: `${firstName} ${lastName}`,
-          email,
-          phone: phone || 'Not provided',
-          skills: skills || [],
-          availability: availability || 'Flexible',
+          firstName: sanitizedData.firstName,
+          lastName: sanitizedData.lastName,
+          fullName: `${sanitizedData.firstName} ${sanitizedData.lastName}`,
+          email: sanitizedData.email,
+          phone: sanitizedData.phone || 'Not provided',
+          skills: sanitizedData.skills || [],
+          availability: sanitizedData.availability || 'Flexible',
           status: 'pending-approval',
           registeredDate: new Date().toISOString(),
           totalHours: 0
@@ -112,12 +132,12 @@ export default async function handler(req, res) {
 
         return res.status(200).json({
           success: true,
-          message: `Volunteer registration completed for ${firstName} ${lastName}`,
+          message: `Volunteer registration completed for ${sanitizedData.firstName} ${sanitizedData.lastName}`,
           volunteer,
           welcomeEmail: {
-            to: email,
-            subject: `Welcome to Forward Horizon Volunteers - ${firstName}`,
-            body: `Dear ${firstName}, thank you for registering as a volunteer. We'll contact you within 2-3 business days.`
+            to: sanitizedData.email,
+            subject: `Welcome to Forward Horizon Volunteers - ${sanitizedData.firstName}`,
+            body: `Dear ${sanitizedData.firstName}, thank you for registering as a volunteer. We'll contact you within 2-3 business days.`
           },
           timestamp: new Date().toISOString()
         });
@@ -156,17 +176,36 @@ export default async function handler(req, res) {
   if (system === 'crisis') {
     if (req.method === 'POST' && action === 'report') {
       try {
+        // Sanitize input to prevent XSS
+        const sanitizeInput = (input) => {
+          if (typeof input !== 'string') return input;
+          return input
+            .trim()
+            .replace(/[<>]/g, '') // Remove potential HTML tags
+            .replace(/['"]/g, '') // Remove quotes
+            .substring(0, 500); // Limit length (longer for descriptions)
+        };
+
         const { reporterName, residentName, incidentType, severity, description } = req.body;
         
-        if (!reporterName || !residentName || !incidentType || !severity) {
+        // Sanitize all string inputs
+        const sanitizedData = {
+          reporterName: sanitizeInput(reporterName),
+          residentName: sanitizeInput(residentName),
+          incidentType: sanitizeInput(incidentType),
+          severity: sanitizeInput(severity),
+          description: sanitizeInput(description)
+        };
+        
+        if (!sanitizedData.reporterName || !sanitizedData.residentName || !sanitizedData.incidentType || !sanitizedData.severity) {
           return res.status(400).json({
             success: false,
             error: 'Missing required fields: reporterName, residentName, incidentType, severity',
             received: { 
-              reporterName: !!reporterName, 
-              residentName: !!residentName, 
-              incidentType: !!incidentType, 
-              severity: !!severity 
+              reporterName: !!sanitizedData.reporterName, 
+              residentName: !!sanitizedData.residentName, 
+              incidentType: !!sanitizedData.incidentType, 
+              severity: !!sanitizedData.severity 
             },
             validValues: {
               incidentType: ['medical', 'mental-health', 'behavioral', 'safety', 'other'],
@@ -185,12 +224,12 @@ export default async function handler(req, res) {
         const incidentId = `CRISIS-${Date.now()}`;
         const incident = {
           id: incidentId,
-          reporterName,
-          residentName,
-          incidentType,
-          severity,
-          description,
-          status: severity === 'critical' ? 'emergency-response' : 'under-review',
+          reporterName: sanitizedData.reporterName,
+          residentName: sanitizedData.residentName,
+          incidentType: sanitizedData.incidentType,
+          severity: sanitizedData.severity,
+          description: sanitizedData.description,
+          status: sanitizedData.severity === 'critical' ? 'emergency-response' : 'under-review',
           reportedDate: new Date().toISOString()
         };
 
@@ -205,9 +244,9 @@ export default async function handler(req, res) {
           success: true,
           message: `Crisis incident ${incidentId} reported and response initiated`,
           incident,
-          responseTime: responseTime[severity],
+          responseTime: responseTime[sanitizedData.severity],
           notifications: {
-            emergency: severity === 'critical' ? ['Crisis manager alerted', 'Emergency services contacted'] : [],
+            emergency: sanitizedData.severity === 'critical' ? ['Crisis manager alerted', 'Emergency services contacted'] : [],
             staff: ['House manager notified', 'Case worker assigned']
           },
           timestamp: new Date().toISOString()
