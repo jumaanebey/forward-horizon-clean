@@ -18,7 +18,15 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Extract form data
+    // Extract and sanitize form data
+    const sanitizeInput = (input) => {
+      if (typeof input !== 'string') return input;
+      return input
+        .trim()
+        .replace(/[<>]/g, '') // Remove potential HTML tags
+        .substring(0, 1000); // Limit length
+    };
+
     const { 
       firstName, 
       lastName, 
@@ -29,8 +37,19 @@ export default async function handler(req, res) {
       consent 
     } = req.body;
 
-    // Validate required fields
-    if (!firstName || !lastName || !email || !message) {
+    // Sanitize all string inputs
+    const sanitizedData = {
+      firstName: sanitizeInput(firstName),
+      lastName: sanitizeInput(lastName),
+      email: sanitizeInput(email),
+      phone: sanitizeInput(phone),
+      service: sanitizeInput(service),
+      message: sanitizeInput(message),
+      consent
+    };
+
+    // Validate required fields using sanitized data
+    if (!sanitizedData.firstName || !sanitizedData.lastName || !sanitizedData.email || !sanitizedData.message) {
       return res.status(400).json({
         success: false,
         error: 'Missing required fields',
@@ -40,21 +59,36 @@ export default async function handler(req, res) {
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(sanitizedData.email)) {
       return res.status(400).json({
         success: false,
         error: 'Invalid email format'
       });
     }
 
-    // Store form submission data
+    // Additional validation
+    if (sanitizedData.firstName.length < 1 || sanitizedData.lastName.length < 1) {
+      return res.status(400).json({
+        success: false,
+        error: 'Name fields cannot be empty'
+      });
+    }
+
+    if (sanitizedData.message.length < 10) {
+      return res.status(400).json({
+        success: false,
+        error: 'Message must be at least 10 characters long'
+      });
+    }
+
+    // Store form submission data using sanitized inputs
     const submissionData = {
-      name: `${firstName} ${lastName}`,
-      email,
-      phone: phone || 'Not provided',
-      service: service || 'General Inquiry',
-      message,
-      consent: consent === 'on' || consent === true,
+      name: `${sanitizedData.firstName} ${sanitizedData.lastName}`,
+      email: sanitizedData.email,
+      phone: sanitizedData.phone || 'Not provided',
+      service: sanitizedData.service || 'General Inquiry',
+      message: sanitizedData.message,
+      consent: sanitizedData.consent === 'on' || sanitizedData.consent === true,
       timestamp: new Date().toISOString(),
       source: req.headers.referer || 'Direct submission'
     };
@@ -64,17 +98,17 @@ export default async function handler(req, res) {
 
     // 1. Send confirmation email to submitter
     const confirmationEmail = {
-      to: email,
-      subject: `Thank you for contacting Forward Horizon, ${firstName}`,
-      body: `Dear ${firstName},\n\nThank you for reaching out to Forward Horizon. We have received your message and will respond within 24 hours.\n\nYour Message:\n${message}\n\nService Requested: ${service || 'General Inquiry'}\n\nBest regards,\nForward Horizon Team\n(310) 488-5280`,
+      to: sanitizedData.email,
+      subject: `Thank you for contacting Forward Horizon, ${sanitizedData.firstName}`,
+      body: `Dear ${sanitizedData.firstName},\n\nThank you for reaching out to Forward Horizon. We have received your message and will respond within 24 hours.\n\nYour Message:\n${sanitizedData.message}\n\nService Requested: ${sanitizedData.service || 'General Inquiry'}\n\nBest regards,\nForward Horizon Team\n(310) 488-5280`,
       html: generateConfirmationEmail(submissionData)
     };
 
     // 2. Send notification to admin
     const adminEmail = {
       to: process.env.ADMIN_EMAIL || 'info@theforwardhorizon.com',
-      subject: `New Contact Form Submission from ${firstName} ${lastName}`,
-      body: `New contact form submission received:\n\nName: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nService: ${service || 'General Inquiry'}\n\nMessage:\n${message}\n\nSubmitted: ${submissionData.timestamp}`,
+      subject: `New Contact Form Submission from ${submissionData.name}`,
+      body: `New contact form submission received:\n\nName: ${submissionData.name}\nEmail: ${sanitizedData.email}\nPhone: ${sanitizedData.phone || 'Not provided'}\nService: ${sanitizedData.service || 'General Inquiry'}\n\nMessage:\n${sanitizedData.message}\n\nSubmitted: ${submissionData.timestamp}`,
       html: generateAdminNotification(submissionData)
     };
 
