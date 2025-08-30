@@ -827,6 +827,26 @@
       }
     }
 </style>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      
+      // Only initialize if measurement ID is configured
+      const measurementId = 'GA_MEASUREMENT_ID';
+      if (measurementId !== 'GA_MEASUREMENT_ID' && measurementId.startsWith('G-')) {
+        gtag('js', new Date());
+        gtag('config', measurementId, {
+          page_title: 'Forward Horizon - Transitional Housing',
+          custom_map: {
+            'custom_parameter_1': 'housing_type',
+            'custom_parameter_2': 'service_area'
+          }
+        });
+      }
+    </script>
 </head>
 <body class="font-body bg-gray-50 text-text-secondary">
     <!-- Ultimate Professional Navigation -->
