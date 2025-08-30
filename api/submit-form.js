@@ -100,10 +100,11 @@ export default async function handler(req, res) {
     // Extract and sanitize form data
     const sanitizeInput = (input) => {
       if (typeof input !== 'string') return input;
-      return input
+      const result = input
         .trim()
         .replace(/[<>]/g, '') // Remove potential HTML tags
         .substring(0, 1000); // Limit length
+      return result || null; // Convert empty strings to null for validation
     };
 
     const { 
@@ -128,11 +129,24 @@ export default async function handler(req, res) {
     };
 
     // Validate required fields using sanitized data
-    if (!sanitizedData.firstName || !sanitizedData.lastName || !sanitizedData.email || !sanitizedData.message) {
+    const missingFields = [];
+    if (!sanitizedData.firstName) missingFields.push('firstName');
+    if (!sanitizedData.lastName) missingFields.push('lastName');
+    if (!sanitizedData.email) missingFields.push('email');
+    if (!sanitizedData.message) missingFields.push('message');
+    
+    if (missingFields.length > 0) {
       return res.status(400).json({
         success: false,
         error: 'Missing required fields',
-        required: ['firstName', 'lastName', 'email', 'message']
+        required: ['firstName', 'lastName', 'email', 'message'],
+        missing: missingFields,
+        debug: {
+          firstName: sanitizedData.firstName,
+          lastName: sanitizedData.lastName,
+          email: sanitizedData.email,
+          message: sanitizedData.message
+        }
       });
     }
 
