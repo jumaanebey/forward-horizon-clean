@@ -46,6 +46,11 @@ setInterval(() => {
 }, 30 * 60 * 1000);
 
 export default async function handler(req, res) {
+  // DEBUG: Version check endpoint
+  if (req.query.debug === 'version') {
+    return res.status(200).json({ version: 'v2.1.0-fixed', timestamp: new Date().toISOString() });
+  }
+  
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
