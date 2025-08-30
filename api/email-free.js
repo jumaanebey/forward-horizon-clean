@@ -22,7 +22,24 @@ export default async function handler(req, res) {
       });
     }
 
-    // Option 1: Use Resend Free Tier (3,000 emails/month free)
+    // Option 1: Try Web3Forms first (we have a key configured)
+    try {
+      const result = await sendViaWeb3Forms({ to, subject, body, html });
+      if (result && result.success) {
+        return res.status(200).json({
+          success: true,
+          message: 'Email sent successfully via Web3Forms (Free)',
+          recipient: to,
+          provider: 'Web3Forms (Free)',
+          timestamp: new Date().toISOString(),
+          result
+        });
+      }
+    } catch (error) {
+      console.log('Web3Forms failed, trying next option:', error.message);
+    }
+
+    // Option 2: Use Resend Free Tier (3,000 emails/month free)
     if (process.env.RESEND_API_KEY) {
       try {
         const result = await sendViaResend({ to, subject, body, html });
@@ -39,7 +56,7 @@ export default async function handler(req, res) {
       }
     }
 
-    // Option 2: Use EmailJS (200 emails/month free, client-side)
+    // Option 3: Use EmailJS (200 emails/month free, client-side)
     if (process.env.EMAILJS_SERVICE_ID) {
       try {
         const result = await sendViaEmailJS({ to, subject, body, html });
@@ -52,23 +69,8 @@ export default async function handler(req, res) {
           result
         });
       } catch (error) {
-        console.log('EmailJS failed, trying next option:', error.message);
+        console.log('EmailJS failed:', error.message);
       }
-    }
-
-    // Option 3: Use Web3Forms (unlimited free emails with their branding)
-    try {
-      const result = await sendViaWeb3Forms({ to, subject, body, html });
-      return res.status(200).json({
-        success: true,
-        message: 'Email sent successfully via Web3Forms (Free)',
-        recipient: to,
-        provider: 'Web3Forms (Free)',
-        timestamp: new Date().toISOString(),
-        result
-      });
-    } catch (error) {
-      console.log('Web3Forms failed:', error.message);
     }
 
     // If all fail, provide setup instructions
@@ -169,7 +171,8 @@ async function sendViaEmailJS({ to, subject, body, html }) {
 // Web3Forms (Unlimited free with branding)
 async function sendViaWeb3Forms({ to, subject, body, html }) {
   const formData = new FormData();
-  formData.append('access_key', process.env.WEB3FORMS_ACCESS_KEY || 'demo-key');
+  // Try the provided key or fall back to environment variable
+  formData.append('access_key', process.env.WEB3FORMS_ACCESS_KEY || 'd7b3dbb2-0d33-4353-ba5a-479dbf0e5a79');
   formData.append('email', to);
   formData.append('subject', subject);
   formData.append('message', html || body);

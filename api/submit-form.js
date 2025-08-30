@@ -78,27 +78,39 @@ export default async function handler(req, res) {
       html: generateAdminNotification(submissionData)
     };
 
-    // Try to send emails using free email service
+    // Send emails in parallel for better performance
     let emailResults = { confirmation: null, admin: null };
     
     try {
-      // Send confirmation email
-      const confirmResponse = await fetch(`${req.headers.host ? `https://${req.headers.host}` : 'http://localhost:3000'}/api/email-free`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(confirmationEmail)
-      });
-      emailResults.confirmation = await confirmResponse.json();
+      // Send both emails simultaneously
+      const [confirmResponse, adminResponse] = await Promise.all([
+        fetch(`${req.headers.host ? `https://${req.headers.host}` : 'http://localhost:3000'}/api/email-free`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(confirmationEmail)
+        }).catch(err => {
+          console.error('Confirmation email error:', err);
+          return { ok: false };
+        }),
+        fetch(`${req.headers.host ? `https://${req.headers.host}` : 'http://localhost:3000'}/api/email-free`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(adminEmail)
+        }).catch(err => {
+          console.error('Admin email error:', err);
+          return { ok: false };
+        })
+      ]);
 
-      // Send admin notification
-      const adminResponse = await fetch(`${req.headers.host ? `https://${req.headers.host}` : 'http://localhost:3000'}/api/email-free`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(adminEmail)
-      });
-      emailResults.admin = await adminResponse.json();
+      // Parse responses
+      if (confirmResponse.ok) {
+        emailResults.confirmation = await confirmResponse.json();
+      }
+      if (adminResponse.ok) {
+        emailResults.admin = await adminResponse.json();
+      }
     } catch (emailError) {
-      console.log('Email service error:', emailError.message);
+      console.error('Email service error:', emailError.message);
     }
 
     // Try N8N webhook if configured (backwards compatibility)
