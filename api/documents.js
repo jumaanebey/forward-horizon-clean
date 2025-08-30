@@ -1,4 +1,4 @@
-export default function handler(req, res) {
+export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -66,10 +66,10 @@ export default function handler(req, res) {
       body: `Dear ${name}, your document package has been generated and will be sent shortly. We look forward to supporting you on your journey.`
     };
 
-    // Attempt to send email notification
+    // Attempt to send email notification using free email service
     let emailResult = null;
     try {
-      const emailResponse = await fetch(`${req.headers.host ? `https://${req.headers.host}` : 'http://localhost:3000'}/api/send-email`, {
+      const emailResponse = await fetch(`${req.headers.host ? `https://${req.headers.host}` : 'http://localhost:3000'}/api/email-free`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

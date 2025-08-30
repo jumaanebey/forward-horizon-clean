@@ -1,0 +1,1015 @@
+{
+  "testSummary": {
+    "totalTests": 19,
+    "passedTests": 0,
+    "failedTests": 19,
+    "successRate": "0.00%",
+    "testDate": "2025-08-30T13:53:49.732Z"
+  },
+  "endpointStatus": {
+    "/api/documents": {
+      "status": "Issues Found",
+      "tests": 4
+    },
+    "/api/email-free": {
+      "status": "Issues Found",
+      "tests": 3
+    },
+    "/api/automation": {
+      "status": "Issues Found",
+      "tests": 6
+    },
+    "/api/send-email": {
+      "status": "Issues Found",
+      "tests": 3
+    },
+    "/api/email-gmail": {
+      "status": "Issues Found",
+      "tests": 3
+    }
+  },
+  "failedTests": [
+    {
+      "endpoint": "/api/documents",
+      "testName": "Valid document generation",
+      "success": false,
+      "details": {
+        "request": {
+          "name": "Test Veteran",
+          "email": "test@example.com",
+          "phone": "(555) 123-4567",
+          "moveInDate": "2025-03-15"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/documents</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "153",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.713Z"
+    },
+    {
+      "endpoint": "/api/documents",
+      "testName": "Handles missing required fields",
+      "success": false,
+      "details": {
+        "request": {
+          "phone": "(555) 123-4567"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/documents</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "153",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.715Z"
+    },
+    {
+      "endpoint": "/api/documents",
+      "testName": "Validates email format",
+      "success": false,
+      "details": {
+        "request": {
+          "name": "Test User",
+          "email": "invalid-email-format",
+          "phone": "(555) 123-4567"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/documents</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "153",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.716Z"
+    },
+    {
+      "endpoint": "/api/documents",
+      "testName": "Rejects GET requests",
+      "success": false,
+      "details": {
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/documents</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "152",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.718Z"
+    },
+    {
+      "endpoint": "/api/email-free",
+      "testName": "Handles valid email request",
+      "success": false,
+      "details": {
+        "request": {
+          "to": "test@example.com",
+          "subject": "Test Email from Forward Horizon",
+          "body": "This is a test email to verify the free email service is working.",
+          "html": "<h1>Test Email</h1><p>This is a test email to verify the free email service is working.</p>"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/email-free</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "154",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.719Z"
+    },
+    {
+      "endpoint": "/api/email-free",
+      "testName": "Handles missing required fields",
+      "success": false,
+      "details": {
+        "request": {
+          "to": "test@example.com"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/email-free</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "154",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.720Z"
+    },
+    {
+      "endpoint": "/api/email-free",
+      "testName": "Email service configuration",
+      "success": false,
+      "details": {
+        "details": "Checks if email service is configured or provides setup instructions"
+      },
+      "timestamp": "2025-08-30T13:53:49.720Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Help documentation",
+      "success": false,
+      "details": {
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/automation</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "153",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.722Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Volunteer registration",
+      "success": false,
+      "details": {
+        "request": {
+          "firstName": "John",
+          "lastName": "Doe",
+          "email": "john.doe@example.com",
+          "phone": "(555) 123-4567",
+          "skills": [
+            "Counseling",
+            "Event Planning"
+          ],
+          "availability": "Weekends"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/automation</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "154",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.723Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Volunteer list",
+      "success": false,
+      "details": {
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/automation</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "153",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.724Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Crisis report",
+      "success": false,
+      "details": {
+        "request": {
+          "reporterName": "Staff Member",
+          "residentName": "Test Resident",
+          "incidentType": "behavioral",
+          "severity": "medium",
+          "description": "Test incident report for API testing"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/automation</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "154",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.725Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Bed availability",
+      "success": false,
+      "details": {
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/automation</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "153",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.727Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Social media analytics",
+      "success": false,
+      "details": {
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/automation</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "153",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.728Z"
+    },
+    {
+      "endpoint": "/api/send-email",
+      "testName": "Email send functionality",
+      "success": false,
+      "details": {
+        "request": {
+          "to": "test@example.com",
+          "subject": "Test Email via Send Email API",
+          "body": "This is a test email to verify the send-email endpoint.",
+          "html": "<h2>Test Email</h2><p>This is a test email to verify the send-email endpoint.</p>",
+          "from": "noreply@theforwardhorizon.com"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/send-email</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "154",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.729Z"
+    },
+    {
+      "endpoint": "/api/send-email",
+      "testName": "Handles missing fields",
+      "success": false,
+      "details": {
+        "request": {
+          "to": "test@example.com"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/send-email</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "154",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.730Z"
+    },
+    {
+      "endpoint": "/api/send-email",
+      "testName": "Provides integration guidance",
+      "success": false,
+      "details": {
+        "details": "Checks if endpoint provides email service integration instructions"
+      },
+      "timestamp": "2025-08-30T13:53:49.730Z"
+    },
+    {
+      "endpoint": "/api/email-gmail",
+      "testName": "Gmail integration endpoint",
+      "success": false,
+      "details": {
+        "request": {
+          "to": "test@example.com",
+          "subject": "Test Gmail Integration",
+          "body": "Testing Gmail email integration endpoint."
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/email-gmail</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "155",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.731Z"
+    },
+    {
+      "endpoint": "/api/email-gmail",
+      "testName": "Provides Gmail setup instructions",
+      "success": false,
+      "details": {
+        "details": "Checks if endpoint provides Gmail configuration guidance"
+      },
+      "timestamp": "2025-08-30T13:53:49.731Z"
+    },
+    {
+      "endpoint": "/api/email-gmail",
+      "testName": "Handles missing required fields",
+      "success": false,
+      "details": {
+        "request": {
+          "subject": "Test"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/email-gmail</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "155",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.731Z"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "LOW",
+      "issue": "Input Validation",
+      "description": "All endpoints properly validate input data",
+      "action": "No action needed - validation is working correctly"
+    }
+  ],
+  "fullResults": [
+    {
+      "endpoint": "/api/documents",
+      "testName": "Valid document generation",
+      "success": false,
+      "details": {
+        "request": {
+          "name": "Test Veteran",
+          "email": "test@example.com",
+          "phone": "(555) 123-4567",
+          "moveInDate": "2025-03-15"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/documents</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "153",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.713Z"
+    },
+    {
+      "endpoint": "/api/documents",
+      "testName": "Handles missing required fields",
+      "success": false,
+      "details": {
+        "request": {
+          "phone": "(555) 123-4567"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/documents</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "153",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.715Z"
+    },
+    {
+      "endpoint": "/api/documents",
+      "testName": "Validates email format",
+      "success": false,
+      "details": {
+        "request": {
+          "name": "Test User",
+          "email": "invalid-email-format",
+          "phone": "(555) 123-4567"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/documents</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "153",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.716Z"
+    },
+    {
+      "endpoint": "/api/documents",
+      "testName": "Rejects GET requests",
+      "success": false,
+      "details": {
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/documents</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "152",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.718Z"
+    },
+    {
+      "endpoint": "/api/email-free",
+      "testName": "Handles valid email request",
+      "success": false,
+      "details": {
+        "request": {
+          "to": "test@example.com",
+          "subject": "Test Email from Forward Horizon",
+          "body": "This is a test email to verify the free email service is working.",
+          "html": "<h1>Test Email</h1><p>This is a test email to verify the free email service is working.</p>"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/email-free</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "154",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.719Z"
+    },
+    {
+      "endpoint": "/api/email-free",
+      "testName": "Handles missing required fields",
+      "success": false,
+      "details": {
+        "request": {
+          "to": "test@example.com"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/email-free</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "154",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.720Z"
+    },
+    {
+      "endpoint": "/api/email-free",
+      "testName": "Email service configuration",
+      "success": false,
+      "details": {
+        "details": "Checks if email service is configured or provides setup instructions"
+      },
+      "timestamp": "2025-08-30T13:53:49.720Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Help documentation",
+      "success": false,
+      "details": {
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/automation</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "153",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.722Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Volunteer registration",
+      "success": false,
+      "details": {
+        "request": {
+          "firstName": "John",
+          "lastName": "Doe",
+          "email": "john.doe@example.com",
+          "phone": "(555) 123-4567",
+          "skills": [
+            "Counseling",
+            "Event Planning"
+          ],
+          "availability": "Weekends"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/automation</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "154",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.723Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Volunteer list",
+      "success": false,
+      "details": {
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/automation</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "153",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.724Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Crisis report",
+      "success": false,
+      "details": {
+        "request": {
+          "reporterName": "Staff Member",
+          "residentName": "Test Resident",
+          "incidentType": "behavioral",
+          "severity": "medium",
+          "description": "Test incident report for API testing"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/automation</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "154",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.725Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Bed availability",
+      "success": false,
+      "details": {
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/automation</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "153",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.727Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Social media analytics",
+      "success": false,
+      "details": {
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/automation</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "153",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.728Z"
+    },
+    {
+      "endpoint": "/api/send-email",
+      "testName": "Email send functionality",
+      "success": false,
+      "details": {
+        "request": {
+          "to": "test@example.com",
+          "subject": "Test Email via Send Email API",
+          "body": "This is a test email to verify the send-email endpoint.",
+          "html": "<h2>Test Email</h2><p>This is a test email to verify the send-email endpoint.</p>",
+          "from": "noreply@theforwardhorizon.com"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/send-email</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "154",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.729Z"
+    },
+    {
+      "endpoint": "/api/send-email",
+      "testName": "Handles missing fields",
+      "success": false,
+      "details": {
+        "request": {
+          "to": "test@example.com"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/send-email</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "154",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.730Z"
+    },
+    {
+      "endpoint": "/api/send-email",
+      "testName": "Provides integration guidance",
+      "success": false,
+      "details": {
+        "details": "Checks if endpoint provides email service integration instructions"
+      },
+      "timestamp": "2025-08-30T13:53:49.730Z"
+    },
+    {
+      "endpoint": "/api/email-gmail",
+      "testName": "Gmail integration endpoint",
+      "success": false,
+      "details": {
+        "request": {
+          "to": "test@example.com",
+          "subject": "Test Gmail Integration",
+          "body": "Testing Gmail email integration endpoint."
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/email-gmail</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "155",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.731Z"
+    },
+    {
+      "endpoint": "/api/email-gmail",
+      "testName": "Provides Gmail setup instructions",
+      "success": false,
+      "details": {
+        "details": "Checks if endpoint provides Gmail configuration guidance"
+      },
+      "timestamp": "2025-08-30T13:53:49.731Z"
+    },
+    {
+      "endpoint": "/api/email-gmail",
+      "testName": "Handles missing required fields",
+      "success": false,
+      "details": {
+        "request": {
+          "subject": "Test"
+        },
+        "response": {
+          "status": 404,
+          "statusText": "Not Found",
+          "data": {
+            "rawResponse": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/email-gmail</pre>\n</body>\n</html>\n"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "155",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            "date": "Sat, 30 Aug 2025 13:53:49 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff",
+            "x-powered-by": "Express"
+          }
+        }
+      },
+      "timestamp": "2025-08-30T13:53:49.731Z"
+    }
+  ]
+}

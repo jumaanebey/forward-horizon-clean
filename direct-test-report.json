@@ -1,0 +1,146 @@
+{
+  "summary": {
+    "totalTests": 16,
+    "passedTests": 16,
+    "failedTests": 0,
+    "successRate": "100.00%"
+  },
+  "endpointStatus": {
+    "/api/documents": {
+      "passed": 4,
+      "total": 4
+    },
+    "/api/email-free": {
+      "passed": 2,
+      "total": 2
+    },
+    "/api/automation": {
+      "passed": 6,
+      "total": 6
+    },
+    "/api/send-email": {
+      "passed": 2,
+      "total": 2
+    },
+    "/api/email-gmail": {
+      "passed": 2,
+      "total": 2
+    }
+  },
+  "failedTests": [],
+  "allResults": [
+    {
+      "endpoint": "/api/documents",
+      "testName": "Valid document generation",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.328Z"
+    },
+    {
+      "endpoint": "/api/documents",
+      "testName": "Missing required fields",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.328Z"
+    },
+    {
+      "endpoint": "/api/documents",
+      "testName": "Invalid email format",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.328Z"
+    },
+    {
+      "endpoint": "/api/documents",
+      "testName": "GET method rejection",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.328Z"
+    },
+    {
+      "endpoint": "/api/email-free",
+      "testName": "Valid email request",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.765Z"
+    },
+    {
+      "endpoint": "/api/email-free",
+      "testName": "Missing required fields",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.765Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Help documentation",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.767Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Volunteer registration",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.767Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Volunteer list",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.767Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Crisis report",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.767Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Bed availability",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.767Z"
+    },
+    {
+      "endpoint": "/api/automation",
+      "testName": "Social analytics",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.767Z"
+    },
+    {
+      "endpoint": "/api/send-email",
+      "testName": "Valid email send",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.768Z"
+    },
+    {
+      "endpoint": "/api/send-email",
+      "testName": "Missing required fields",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.768Z"
+    },
+    {
+      "endpoint": "/api/email-gmail",
+      "testName": "Gmail endpoint test",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.769Z"
+    },
+    {
+      "endpoint": "/api/email-gmail",
+      "testName": "Missing required fields",
+      "success": true,
+      "details": "Passed",
+      "timestamp": "2025-08-30T13:55:04.769Z"
+    }
+  ],
+  "testDate": "2025-08-30T13:55:04.770Z"
+}
