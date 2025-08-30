@@ -38,6 +38,26 @@ export default async function handler(req, res) {
     return res.status(200).end();
   }
 
+  const { system, action, endpoint } = req.query;
+
+  // Health check endpoint
+  if (endpoint === 'health') {
+    const timestamp = new Date().toISOString();
+    return res.status(200).json({
+      status: 'healthy',
+      timestamp,
+      version: '1.2.1',
+      services: {
+        email: 'operational',
+        documents: 'operational', 
+        automation: 'operational',
+        forms: 'operational'
+      },
+      uptime: process.uptime ? Math.floor(process.uptime()) : 'N/A',
+      environment: process.env.NODE_ENV || 'production'
+    });
+  }
+
   const { system, action } = req.query;
 
   // VOLUNTEER MANAGEMENT SYSTEM
