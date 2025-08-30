@@ -1,5 +1,20 @@
 # Forward Horizon Website Changelog
 
+## [2.0.1] - 2025-08-30
+
+### Autonomous Session Improvements
+
+#### 🛠️ Technical Enhancements
+- **Google Analytics Infrastructure**: Added proper gtag setup with conditional loading to prevent undefined gtag errors
+- **Security Headers**: Implemented X-Content-Type-Options, X-Frame-Options, and X-XSS-Protection on form endpoints
+- **Favicon Support**: Added inline SVG favicon with house emoji and FH branding for better browser identification
+- **Code Quality**: Verified form submission bugs are resolved and health endpoints are operational
+
+#### 📈 Performance & SEO
+- **Analytics Ready**: Form submission and performance tracking will work once GA measurement ID is configured
+- **Browser Compatibility**: Enhanced mobile bookmarking with apple-touch-icon
+- **Security Posture**: Improved API endpoint security headers for better protection
+
 ## [2.0.0] - 2024-12-26
 
 ### Major Update: Emotion-First Messaging & Hybrid Architecture
