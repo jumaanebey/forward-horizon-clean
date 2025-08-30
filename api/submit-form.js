@@ -99,7 +99,7 @@ export default async function handler(req, res) {
   try {
     // Extract and sanitize form data
     const sanitizeInput = (input) => {
-      if (typeof input !== 'string') return input;
+      if (typeof input !== 'string' || !input) return null; // Return null for non-strings or falsy values
       const result = input
         .trim()
         .replace(/[<>]/g, '') // Remove potential HTML tags
