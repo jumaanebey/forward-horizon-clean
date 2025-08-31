@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Stories - Forward Horizon</title>
+    <meta name="description" content="Real stories of transformation and hope from Forward Horizon residents.">
+    
+    <!-- Enhanced Professional Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Inter', 'system-ui', 'sans-serif'],
+                        'body': ['Open Sans', 'system-ui', 'sans-serif']
+                    },
+                    colors: {
+                        primary: {
+                            DEFAULT: '#1e40af',
+                            light: '#3b82f6',
+                            dark: '#1e3a8a'
+                        },
+                        secondary: {
+                            DEFAULT: '#059669',
+                            light: '#10b981',
+                            dark: '#047857'
+                        },
+                        gold: '#fbbf24',
+                        'text-primary': '#1f2937',
+                        'text-secondary': '#4b5563',
+                        'readable-light': '#6b7280',
+                        'readable-secondary': '#374151'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .story-card {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="font-body bg-gray-50 text-text-secondary">
+    <!-- Simplified Navigation -->
+    <nav class="glass-nav shadow-lg sticky top-0 w-full z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <span class="text-2xl font-display font-bold text-gradient">Forward Horizon</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-text-secondary hover:text-primary transition-all duration-300">
+                        <i class="fas fa-arrow-left mr-2"></i>Back to Home
+                    </a>
+                    <a href="application.html" class="bg-gradient-to-r from-primary to-primary-dark text-white px-6 py-3 rounded-xl font-display font-bold shadow-lg">
+                        Apply Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-secondary via-secondary-dark to-primary py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center text-white">
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+                Stories of Hope & Transformation
+            </h1>
+            <p class="font-body text-xl sm:text-2xl text-green-100">
+                Real people. Real journeys. Real hope for your future.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stories Section -->
+    <section class="py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <!-- Featured Story -->
+            <div class="glass-card rounded-3xl p-10 mb-12 shadow-xl bg-gradient-to-br from-blue-50 to-indigo-50">
+                <div class="flex items-start space-x-6">
+                    <div class="flex-shrink-0">
+                        <div class="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white text-3xl font-bold">
+                            JM
+                        </div>
+                    </div>
+                    <div class="flex-grow">
+                        <h2 class="font-display text-3xl font-bold text-primary mb-2">From Combat to Community</h2>
+                        <p class="text-readable-light mb-4">Veteran Program Graduate • 18 months sober</p>
+                        <blockquote class="font-body text-lg text-readable-secondary leading-relaxed italic mb-6">
+                            "After two tours in Afghanistan, I came home lost. I didn't know how to be a civilian. 
+                            The nightmares, the anxiety... I tried to numb it all. Forward Horizon didn't just give me a bed - 
+                            they gave me brothers who understood. Today, I have my own apartment, a job I'm proud of, 
+                            and I'm helping other vets find their way home too."
+                        </blockquote>
+                        <p class="font-semibold text-secondary">
+                            <i class="fas fa-check-circle mr-2"></i>Now works as a peer counselor helping other veterans
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story Grid -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- Story 1 -->
+                <div class="story-card glass-card rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-gradient-to-br from-secondary to-secondary-dark rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4">
+                            MS
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-text-primary">Finding My Way Back</h3>
+                            <p class="text-sm text-readable-light">Recovery Program • 2 years clean</p>
+                        </div>
+                    </div>
+                    <blockquote class="text-readable-secondary leading-relaxed italic mb-4">
+                        "I lost everything to addiction - my family, my career, my self-respect. 
+                        Forward Horizon taught me I could rebuild. The structure, the accountability, 
+                        the genuine care... it saved my life. I just celebrated 2 years clean and my daughter 
+                        is back in my life."
+                    </blockquote>
+                    <div class="flex items-center text-sm text-secondary font-semibold">
+                        <i class="fas fa-heart mr-2"></i>Reunited with family
+                    </div>
+                </div>
+
+                <!-- Story 2 -->
+                <div class="story-card glass-card rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-700 rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4">
+                            RJ
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-text-primary">Second Chances Work</h3>
+                            <p class="text-sm text-readable-light">Re-entry Program • Employed full-time</p>
+                        </div>
+                    </div>
+                    <blockquote class="text-readable-secondary leading-relaxed italic mb-4">
+                        "After 5 years inside, I thought no one would give me a chance. Forward Horizon proved me wrong. 
+                        They helped me get my CDL, find work, and most importantly, believe in myself again. 
+                        I'm not my worst mistake - I'm proof that people can change."
+                    </blockquote>
+                    <div class="flex items-center text-sm text-purple-600 font-semibold">
+                        <i class="fas fa-briefcase mr-2"></i>Driving truck, supporting family
+                    </div>
+                </div>
+
+                <!-- Story 3 -->
+                <div class="story-card glass-card rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-gradient-to-br from-gold to-yellow-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4">
+                            AT
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-text-primary">From Homeless to Hopeful</h3>
+                            <p class="text-sm text-readable-light">Veteran Program • Housing secured</p>
+                        </div>
+                    </div>
+                    <blockquote class="text-readable-secondary leading-relaxed italic mb-4">
+                        "PTSD had me living under a bridge for 3 years. I'd given up. 
+                        A Forward Horizon outreach worker found me and didn't give up on me. 
+                        Now I have my own place, I'm in therapy, and I'm reconnecting with my kids. 
+                        This place gave me my life back."
+                    </blockquote>
+                    <div class="flex items-center text-sm text-gold font-semibold">
+                        <i class="fas fa-home mr-2"></i>Permanently housed
+                    </div>
+                </div>
+
+                <!-- Story 4 -->
+                <div class="story-card glass-card rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-gradient-to-br from-primary to-primary-dark rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4">
+                            DW
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-text-primary">Building a Future</h3>
+                            <p class="text-sm text-readable-light">Recovery Program • In college</p>
+                        </div>
+                    </div>
+                    <blockquote class="text-readable-secondary leading-relaxed italic mb-4">
+                        "At 45, I thought it was too late to start over. Forward Horizon showed me it's never too late. 
+                        They helped me get into community college. I'm studying to be a substance abuse counselor. 
+                        I want to give back what was given to me - hope."
+                    </blockquote>
+                    <div class="flex items-center text-sm text-primary font-semibold">
+                        <i class="fas fa-graduation-cap mr-2"></i>Pursuing education
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="glass-card rounded-3xl p-10 bg-gradient-to-br from-green-50 to-blue-50 mb-12">
+                <h2 class="font-display text-3xl font-bold text-center mb-8 text-primary">Our Impact in Numbers</h2>
+                <div class="grid md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-5xl font-bold text-secondary mb-2">87%</div>
+                        <p class="text-readable-secondary font-semibold">Successfully Housed After Program</p>
+                    </div>
+                    <div>
+                        <div class="text-5xl font-bold text-primary mb-2">73%</div>
+                        <p class="text-readable-secondary font-semibold">Employed Within 6 Months</p>
+                    </div>
+                    <div>
+                        <div class="text-5xl font-bold text-purple-600 mb-2">91%</div>
+                        <p class="text-readable-secondary font-semibold">Maintain Sobriety at 1 Year</p>
+                    </div>
+                    <div>
+                        <div class="text-5xl font-bold text-gold mb-2">500+</div>
+                        <p class="text-readable-secondary font-semibold">Lives Transformed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="text-center glass-card rounded-3xl p-12 bg-gradient-to-br from-primary to-secondary text-white">
+                <h2 class="font-display text-4xl font-bold mb-6">Your Story Can Be Next</h2>
+                <p class="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
+                    Every person here started where you are now - uncertain, scared, but ready for change. 
+                    You have a story worth writing, and we're here to help you write it.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="application.html" class="bg-white text-primary px-8 py-4 rounded-xl font-display font-bold text-lg shadow-lg hover:shadow-xl transition-all">
+                        <i class="fas fa-pen mr-2"></i>Start Writing Your Story
+                    </a>
+                    <a href="index.html#contact" class="border-2 border-white text-white px-8 py-4 rounded-xl font-display font-bold text-lg hover:bg-white hover:text-primary transition-all">
+                        <i class="fas fa-phone mr-2"></i>Talk to Someone
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="mb-4">© 2024 Forward Horizon. All rights reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="index.html" class="text-gray-400 hover:text-white">Home</a>
+                <a href="application.html" class="text-gray-400 hover:text-white">Apply Now</a>
+                <a href="index.html#contact" class="text-gray-400 hover:text-white">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

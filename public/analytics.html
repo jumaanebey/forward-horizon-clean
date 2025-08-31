@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Setup - Forward Horizon</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+        }
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .step {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+        .option {
+            margin: 20px 0;
+            padding: 20px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .option h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .pros, .cons {
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .pros {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+        }
+        .cons {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .button:hover {
+            background: #5a67d8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Analytics Setup Guide</h1>
+        
+        <p>Choose and implement an analytics solution to track visitor engagement on Forward Horizon.</p>
+
+        <h2>Option 1: Google Analytics 4 (GA4) - Recommended</h2>
+        <div class="option">
+            <h3>Setup Instructions</h3>
+            
+            <div class="step">
+                <strong>Step 1: Create Google Analytics Account</strong>
+                <ol>
+                    <li>Go to <a href="https://analytics.google.com" target="_blank">Google Analytics</a></li>
+                    <li>Click "Start measuring"</li>
+                    <li>Account name: "Forward Horizon"</li>
+                    <li>Property name: "theforwardhorizon.com"</li>
+                    <li>Select your timezone and currency</li>
+                    <li>Choose business size and objectives</li>
+                </ol>
+            </div>
+
+            <div class="step">
+                <strong>Step 2: Get Your Measurement ID</strong>
+                <p>After setup, you'll receive a Measurement ID like: <code>G-XXXXXXXXXX</code></p>
+            </div>
+
+            <div class="step">
+                <strong>Step 3: Add to Your Website</strong>
+                <p>Add this code to the <code>&lt;head&gt;</code> section of all HTML files:</p>
+                <div class="code-block">
+                    <code>&lt;!-- Google Analytics --&gt;<br>
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"&gt;&lt;/script&gt;<br>
+&lt;script&gt;<br>
+  window.dataLayer = window.dataLayer || [];<br>
+  function gtag(){dataLayer.push(arguments);}<br>
+  gtag('js', new Date());<br>
+  gtag('config', 'G-XXXXXXXXXX');<br>
+&lt;/script&gt;</code>
+                </div>
+            </div>
+
+            <div class="pros-cons">
+                <div class="pros">
+                    <strong>✅ Pros:</strong>
+                    <ul>
+                        <li>Free for most websites</li>
+                        <li>Comprehensive data</li>
+                        <li>Integration with Google Ads</li>
+                        <li>Real-time reporting</li>
+                        <li>Conversion tracking</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <strong>⚠️ Cons:</strong>
+                    <ul>
+                        <li>Privacy concerns</li>
+                        <li>Complex interface</li>
+                        <li>Learning curve</li>
+                        <li>Requires cookie consent</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>Option 2: Privacy-Friendly Analytics (Plausible/Simple Analytics)</h2>
+        <div class="option">
+            <h3>Plausible Analytics</h3>
+            
+            <div class="step">
+                <strong>Setup:</strong>
+                <ol>
+                    <li>Sign up at <a href="https://plausible.io" target="_blank">Plausible.io</a> ($9/month)</li>
+                    <li>Add your domain</li>
+                    <li>Add this single line to your HTML:</li>
+                </ol>
+                <div class="code-block">
+                    <code>&lt;script defer data-domain="theforwardhorizon.com" src="https://plausible.io/js/script.js"&gt;&lt;/script&gt;</code>
+                </div>
+            </div>
+
+            <div class="pros-cons">
+                <div class="pros">
+                    <strong>✅ Pros:</strong>
+                    <ul>
+                        <li>Privacy-focused</li>
+                        <li>No cookies</li>
+                        <li>GDPR compliant</li>
+                        <li>Simple interface</li>
+                        <li>Lightweight (< 1KB)</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <strong>⚠️ Cons:</strong>
+                    <ul>
+                        <li>Paid service</li>
+                        <li>Less detailed data</li>
+                        <li>No user tracking</li>
+                        <li>Basic features only</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>Option 3: Custom Analytics Implementation</h2>
+        <div class="option">
+            <h3>Build Your Own with Vercel Analytics</h3>
+            
+            <div class="step">
+                <strong>Setup:</strong>
+                <ol>
+                    <li>Install Vercel Analytics: <code>npm install @vercel/analytics</code></li>
+                    <li>Add to your project:</li>
+                </ol>
+                <div class="code-block">
+                    <code>import { Analytics } from '@vercel/analytics/react';<br>
+&lt;Analytics /&gt;</code>
+                </div>
+            </div>
+
+            <div class="pros-cons">
+                <div class="pros">
+                    <strong>✅ Pros:</strong>
+                    <ul>
+                        <li>Built into Vercel</li>
+                        <li>Privacy-friendly</li>
+                        <li>Real-time data</li>
+                        <li>Web Vitals tracking</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <strong>⚠️ Cons:</strong>
+                    <ul>
+                        <li>Limited free tier</li>
+                        <li>Basic metrics only</li>
+                        <li>Vercel-specific</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>What to Track</h2>
+        <div class="step">
+            <strong>Key Metrics for Forward Horizon:</strong>
+            <ul>
+                <li><strong>Page Views:</strong> Which pages get the most traffic</li>
+                <li><strong>Form Submissions:</strong> Application and contact form completions</li>
+                <li><strong>User Sources:</strong> Where visitors come from (Google, social, direct)</li>
+                <li><strong>Device Types:</strong> Mobile vs desktop usage</li>
+                <li><strong>Geographic Data:</strong> Where your visitors are located</li>
+                <li><strong>Bounce Rate:</strong> How many leave without interaction</li>
+                <li><strong>Session Duration:</strong> How long people stay on site</li>
+            </ul>
+        </div>
+
+        <h2>Quick Implementation Script</h2>
+        <div class="step">
+            <strong>Add this to all your HTML files (replace G-XXXXXXXXXX with your ID):</strong>
+            <div class="code-block">
+                <code>&lt;!-- Google Analytics --&gt;<br>
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"&gt;&lt;/script&gt;<br>
+&lt;script&gt;<br>
+  window.dataLayer = window.dataLayer || [];<br>
+  function gtag(){dataLayer.push(arguments);}<br>
+  gtag('js', new Date());<br>
+  gtag('config', 'G-XXXXXXXXXX', {<br>
+    anonymize_ip: true,<br>
+    cookie_flags: 'SameSite=None;Secure'<br>
+  });<br>
+  <br>
+  // Track form submissions<br>
+  function trackFormSubmit(formType) {<br>
+    gtag('event', 'form_submit', {<br>
+      'form_type': formType,<br>
+      'page_location': window.location.href<br>
+    });<br>
+  }<br>
+&lt;/script&gt;</code>
+            </div>
+        </div>
+
+        <h2>Privacy Policy Addition</h2>
+        <div class="step">
+            <strong>Add this to your privacy policy:</strong>
+            <div class="code-block">
+                <code>We use Google Analytics to understand how visitors use our website. This helps us improve our services and user experience. Google Analytics collects anonymized data about page visits, browser types, and general geographic location. We do not collect personally identifiable information through analytics. You can opt-out of Google Analytics by installing the Google Analytics Opt-out Browser Add-on.</code>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="https://theforwardhorizon.com" class="button">← Back to Website</a>
+        </div>
+    </div>
+</body>
+</html>
