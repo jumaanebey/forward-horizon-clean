@@ -14,9 +14,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Favicon -->
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="application-name" content="Forward Horizon">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Forward Horizon">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-TileColor" content="#2563eb">
+    <meta name="msapplication-tap-highlight" content="no">
+    
+    <!-- Favicon and Icons -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle r='50' cx='50' cy='50' fill='%232c5530'/><text y='.9em' x='50%' font-size='50' text-anchor='middle' fill='white'>FH</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle r='50' cx='50' cy='50' fill='%232563eb'/><text y='.9em' x='50%' font-size='50' text-anchor='middle' fill='white'>FH</text></svg>">
     
     <title>Forward Horizon - Transitional Housing Los Angeles | Veterans, Recovery, Re-entry</title>
     <meta name="description" content="Transitional housing in Los Angeles for veterans, recovering individuals, and returning citizens. 24/7 support, job placement, mental health services. Call (310) 488-5280.">
@@ -2279,6 +2290,37 @@
                 }, 0);
             });
         }
+
+        // Initialize PWA features
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+
+    <!-- PWA Installation and Offline Support -->
+    <script src="/js/pwa-install.js"></script>
+    <script src="/js/offline-support.js"></script>
+
+    <!-- Crisis Mode Activation for PWA -->
+    <script>
+        // Enable crisis mode features when needed
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is in crisis (from URL params or localStorage)
+            const urlParams = new URLSearchParams(window.location.search);
+            const inCrisis = urlParams.get('crisis') === 'true' || localStorage.getItem('crisis-mode') === 'true';
+            
+            if (inCrisis && window.pwaInstaller) {
+                window.pwaInstaller.enableCrisisMode();
+            }
+        });
     </script>
 </body>
 </html>

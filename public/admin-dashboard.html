@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Forward Horizon</title>
+    <meta name="description" content="Administrative dashboard for Forward Horizon transitional housing management.">
+    
+    <!-- Enhanced Professional Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Inter', 'system-ui', 'sans-serif'],
+                        'body': ['Open Sans', 'system-ui', 'sans-serif']
+                    },
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#059669',
+                        accent: '#dc2626',
+                        warning: '#f59e0b',
+                        'text-primary': '#1f2937',
+                        'text-secondary': '#4b5563',
+                        'readable-light': '#6b7280',
+                        'readable-secondary': '#374151'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .sidebar-transition { 
+            transition: transform 0.3s ease-in-out; 
+        }
+        
+        .dashboard-card {
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        
+        .status-active { background-color: #059669; }
+        .status-pending { background-color: #f59e0b; }
+        .status-urgent { background-color: #dc2626; }
+        .status-completed { background-color: #6b7280; }
+    </style>
+</head>
+<body class="font-body bg-gray-50 text-text-secondary">
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden hidden"></div>
+    
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-white shadow-xl z-30 transform -translate-x-full md:translate-x-0 sidebar-transition">
+        <div class="p-6">
+            <div class="flex items-center space-x-3 mb-8">
+                <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center text-white font-bold">
+                    FH
+                </div>
+                <div>
+                    <h1 class="font-display text-xl font-bold text-text-primary">Forward Horizon</h1>
+                    <p class="text-sm text-readable-light">Admin Dashboard</p>
+                </div>
+            </div>
+            
+            <nav class="space-y-2">
+                <a href="#overview" class="dashboard-nav-link active flex items-center px-4 py-3 rounded-lg bg-primary text-white font-semibold">
+                    <i class="fas fa-tachometer-alt mr-3"></i>
+                    Overview
+                </a>
+                <a href="#applications" class="dashboard-nav-link flex items-center px-4 py-3 rounded-lg text-readable-secondary hover:bg-gray-100 font-medium">
+                    <i class="fas fa-file-alt mr-3"></i>
+                    Applications
+                    <span class="ml-auto bg-accent text-white text-xs px-2 py-1 rounded-full">3</span>
+                </a>
+                <a href="#residents" class="dashboard-nav-link flex items-center px-4 py-3 rounded-lg text-readable-secondary hover:bg-gray-100 font-medium">
+                    <i class="fas fa-users mr-3"></i>
+                    Current Residents
+                </a>
+                <a href="#bed-management" class="dashboard-nav-link flex items-center px-4 py-3 rounded-lg text-readable-secondary hover:bg-gray-100 font-medium">
+                    <i class="fas fa-bed mr-3"></i>
+                    Bed Management
+                </a>
+                <a href="#crisis-alerts" class="dashboard-nav-link flex items-center px-4 py-3 rounded-lg text-readable-secondary hover:bg-gray-100 font-medium">
+                    <i class="fas fa-exclamation-triangle mr-3"></i>
+                    Crisis Alerts
+                    <span class="ml-auto bg-warning text-white text-xs px-2 py-1 rounded-full">1</span>
+                </a>
+                <a href="#reports" class="dashboard-nav-link flex items-center px-4 py-3 rounded-lg text-readable-secondary hover:bg-gray-100 font-medium">
+                    <i class="fas fa-chart-bar mr-3"></i>
+                    Reports
+                </a>
+                <a href="#settings" class="dashboard-nav-link flex items-center px-4 py-3 rounded-lg text-readable-secondary hover:bg-gray-100 font-medium">
+                    <i class="fas fa-cog mr-3"></i>
+                    Settings
+                </a>
+            </nav>
+            
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white text-sm font-bold">
+                        JS
+                    </div>
+                    <div>
+                        <p class="font-semibold text-text-primary">John Smith</p>
+                        <p class="text-xs text-readable-light">Administrator</p>
+                    </div>
+                </div>
+                <button class="mt-4 w-full flex items-center justify-center px-4 py-2 text-readable-secondary hover:text-accent transition-colors">
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="md:ml-64 min-h-screen">
+        <!-- Top Bar -->
+        <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <button id="mobile-menu-btn" class="md:hidden mr-4 text-readable-secondary hover:text-text-primary">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <h2 class="font-display text-2xl font-bold text-text-primary">Dashboard Overview</h2>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button class="relative p-2 text-readable-secondary hover:text-text-primary">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-accent text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">4</span>
+                        </button>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-sm font-semibold text-text-primary">Emergency Line</p>
+                        <a href="tel:(310)488-5280" class="text-accent font-bold hover:text-red-700">(310) 488-5280</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <main class="p-6">
+            <!-- Crisis Alert Banner -->
+            <div class="bg-red-50 border-l-4 border-accent rounded-lg p-4 mb-6">
+                <div class="flex items-center">
+                    <i class="fas fa-exclamation-triangle text-accent text-xl mr-3"></i>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-text-primary">Crisis Alert - Bed Capacity Critical</h3>
+                        <p class="text-sm text-readable-secondary">Currently at 95% capacity (38/40 beds occupied). Consider activating overflow protocols.</p>
+                    </div>
+                    <button class="text-accent hover:text-red-700 font-semibold">View Details</button>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Total Residents -->
+                <div class="dashboard-card bg-white rounded-xl p-6 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-readable-light text-sm font-medium">Current Residents</p>
+                            <p class="text-3xl font-bold text-text-primary">38</p>
+                            <p class="text-sm text-secondary font-semibold">+2 this week</p>
+                        </div>
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-users text-primary text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pending Applications -->
+                <div class="dashboard-card bg-white rounded-xl p-6 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-readable-light text-sm font-medium">Pending Applications</p>
+                            <p class="text-3xl font-bold text-text-primary">12</p>
+                            <p class="text-sm text-warning font-semibold">3 urgent</p>
+                        </div>
+                        <div class="w-12 h-12 bg-warning bg-opacity-10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-file-alt text-warning text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Available Beds -->
+                <div class="dashboard-card bg-white rounded-xl p-6 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-readable-light text-sm font-medium">Available Beds</p>
+                            <p class="text-3xl font-bold text-text-primary">2</p>
+                            <p class="text-sm text-accent font-semibold">95% capacity</p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent bg-opacity-10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-bed text-accent text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monthly Completions -->
+                <div class="dashboard-card bg-white rounded-xl p-6 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-readable-light text-sm font-medium">Successful Transitions</p>
+                            <p class="text-3xl font-bold text-text-primary">7</p>
+                            <p class="text-sm text-secondary font-semibold">This month</p>
+                        </div>
+                        <div class="w-12 h-12 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check-circle text-secondary text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="grid lg:grid-cols-3 gap-6">
+                <!-- Recent Applications -->
+                <div class="lg:col-span-2 bg-white rounded-xl p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="font-display text-xl font-bold text-text-primary">Recent Applications</h3>
+                        <a href="#applications" class="text-primary hover:text-blue-700 font-semibold text-sm">View All</a>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-gradient-to-br from-secondary to-green-600 rounded-full flex items-center justify-center text-white font-semibold">
+                                    MJ
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-text-primary">Marcus Johnson</h4>
+                                    <p class="text-sm text-readable-light">Veterans Program • Submitted 2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="status-dot status-urgent"></span>
+                                <span class="text-sm font-semibold text-accent">Urgent</span>
+                                <button class="text-primary hover:text-blue-700 text-sm font-semibold">Review</button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
+                                    SP
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-text-primary">Sarah Peterson</h4>
+                                    <p class="text-sm text-readable-light">Recovery Program • Submitted 5 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="status-dot status-pending"></span>
+                                <span class="text-sm font-semibold text-warning">Pending</span>
+                                <button class="text-primary hover:text-blue-700 text-sm font-semibold">Review</button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-full flex items-center justify-center text-white font-semibold">
+                                    DJ
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-text-primary">David Jackson</h4>
+                                    <p class="text-sm text-readable-light">Re-entry Program • Submitted 1 day ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="status-dot status-active"></span>
+                                <span class="text-sm font-semibold text-secondary">In Review</span>
+                                <button class="text-primary hover:text-blue-700 text-sm font-semibold">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions & Alerts -->
+                <div class="space-y-6">
+                    <!-- Quick Actions -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <h3 class="font-display text-xl font-bold text-text-primary mb-4">Quick Actions</h3>
+                        <div class="space-y-3">
+                            <button class="w-full flex items-center justify-center px-4 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                                <i class="fas fa-plus mr-2"></i>
+                                New Admission
+                            </button>
+                            <button class="w-full flex items-center justify-center px-4 py-3 bg-secondary text-white rounded-lg font-semibold hover:bg-green-600 transition-colors">
+                                <i class="fas fa-user-check mr-2"></i>
+                                Check Out Resident
+                            </button>
+                            <button class="w-full flex items-center justify-center px-4 py-3 bg-warning text-white rounded-lg font-semibold hover:bg-yellow-600 transition-colors">
+                                <i class="fas fa-exclamation-triangle mr-2"></i>
+                                Report Incident
+                            </button>
+                            <button class="w-full flex items-center justify-center px-4 py-3 border-2 border-gray-300 text-readable-secondary rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-calendar-plus mr-2"></i>
+                                Schedule Meeting
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Program Statistics -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <h3 class="font-display text-xl font-bold text-text-primary mb-4">Program Breakdown</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 bg-secondary rounded-full mr-3"></div>
+                                    <span class="text-sm font-medium">Veterans</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="font-semibold">15</span>
+                                    <span class="text-readable-light text-xs ml-1">(39%)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 bg-primary rounded-full mr-3"></div>
+                                    <span class="text-sm font-medium">Recovery</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="font-semibold">12</span>
+                                    <span class="text-readable-light text-xs ml-1">(32%)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 bg-purple-600 rounded-full mr-3"></div>
+                                    <span class="text-sm font-medium">Re-entry</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="font-semibold">8</span>
+                                    <span class="text-readable-light text-xs ml-1">(21%)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
+                                    <span class="text-sm font-medium">General</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="font-semibold">3</span>
+                                    <span class="text-readable-light text-xs ml-1">(8%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+
+        function toggleMobileMenu() {
+            sidebar.classList.toggle('-translate-x-full');
+            mobileOverlay.classList.toggle('hidden');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        mobileOverlay.addEventListener('click', toggleMobileMenu);
+
+        // Navigation handling
+        document.querySelectorAll('.dashboard-nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.dashboard-nav-link').forEach(l => {
+                    l.classList.remove('active', 'bg-primary', 'text-white');
+                    l.classList.add('text-readable-secondary', 'hover:bg-gray-100');
+                });
+                
+                // Add active class to clicked link
+                this.classList.add('active', 'bg-primary', 'text-white');
+                this.classList.remove('text-readable-secondary', 'hover:bg-gray-100');
+                
+                // Update main content header
+                const section = this.getAttribute('href').substring(1);
+                const headerMap = {
+                    'overview': 'Dashboard Overview',
+                    'applications': 'Applications Management',
+                    'residents': 'Current Residents',
+                    'bed-management': 'Bed Management',
+                    'crisis-alerts': 'Crisis Alerts',
+                    'reports': 'Reports & Analytics',
+                    'settings': 'System Settings'
+                };
+                
+                document.querySelector('header h2').textContent = headerMap[section] || 'Dashboard';
+                
+                // Close mobile menu if open
+                if (!sidebar.classList.contains('-translate-x-full')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        // Simulate real-time updates
+        setInterval(() => {
+            // Update notification badge occasionally
+            const notificationBadge = document.querySelector('.fa-bell').nextElementSibling;
+            const currentCount = parseInt(notificationBadge.textContent);
+            if (Math.random() < 0.1) { // 10% chance every 5 seconds
+                notificationBadge.textContent = currentCount + 1;
+            }
+        }, 5000);
+
+        // Add click handlers for action buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Crisis alert action
+            document.querySelector('.bg-red-50 button').addEventListener('click', function() {
+                alert('Crisis Alert Details:\n\n• Current Occupancy: 38/40 beds\n• Estimated Overflow Time: 2-3 days\n• Recommended Actions:\n  - Contact backup facilities\n  - Review waitlist priorities\n  - Prepare emergency protocols');
+            });
+
+            // Quick action buttons
+            document.querySelectorAll('.bg-white .space-y-3 button').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const action = this.textContent.trim();
+                    alert(`${action} functionality would be implemented here.\n\nThis is a mockup demonstration of the admin dashboard interface.`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

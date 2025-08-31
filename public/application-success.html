@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application Received - Forward Horizon</title>
     <meta name="description" content="Your application has been successfully submitted to Forward Horizon transitional housing.">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Enhanced Professional Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        'display': ['Inter', 'system-ui', 'sans-serif'],
+                        'body': ['Open Sans', 'system-ui', 'sans-serif']
+                    },
                     colors: {
-                        primary: '#667eea',
-                        'primary-dark': '#5a67d8',
-                        secondary: '#764ba2',
-                        accent: '#f59e0b'
+                        primary: '#2563eb',
+                        secondary: '#059669',
+                        accent: '#dc2626',
+                        'text-primary': '#1f2937',
+                        'text-secondary': '#4b5563',
+                        'readable-light': '#6b7280',
+                        'readable-secondary': '#374151'
                     }
                 }
             }
@@ -31,76 +39,71 @@
     </script>
     
     <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .success-hero {
+            background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
         }
+        
         .check-animation {
             animation: checkmark 0.8s ease-out;
         }
+        
         @keyframes checkmark {
             0% {
-                transform: scale(0) rotate(45deg);
+                transform: scale(0) rotate(0deg);
                 opacity: 0;
             }
             50% {
-                transform: scale(1.2) rotate(45deg);
+                transform: scale(1.2) rotate(180deg);
             }
             100% {
-                transform: scale(1) rotate(45deg);
+                transform: scale(1) rotate(360deg);
                 opacity: 1;
             }
         }
+        
         .fade-in {
             animation: fadeIn 1s ease-out;
         }
+        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-    
-    /* Performance optimizations */
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-    
-    /* Smooth scrolling */
-    html {
-      scroll-behavior: smooth;
-    }
-    
-    /* Preload critical fonts */
-    @font-face {
-      font-family: 'Inter';
-      font-display: swap;
-    }
-    
-    /* Reduce motion for accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-</style>
+        
+        .timeline-step {
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-step:hover {
+            transform: translateX(5px);
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
+<body class="font-body bg-gray-50 text-text-secondary">
+    <!-- Crisis Support Bar -->
+    <div class="bg-accent text-white py-2 px-4 text-center font-medium">
+        <span class="mr-4">🚨 NEED IMMEDIATE HELP?</span>
+        <a href="tel:(310)488-5280" class="font-bold hover:underline">(310) 488-5280</a>
+        <span class="mx-2">•</span>
+        <span>Available 24/7</span>
+    </div>
+
     <!-- Success Hero Section -->
-    <section class="gradient-bg text-white py-20">
+    <section class="success-hero text-white py-16">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <!-- Success Checkmark -->
             <div class="mb-8 inline-block">
-                <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center check-animation">
-                    <i class="fas fa-check text-5xl text-green-500"></i>
+                <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center check-animation shadow-xl">
+                    <i class="fas fa-check text-5xl text-secondary"></i>
                 </div>
             </div>
             
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 fade-in">
-                Application Received!
+            <h1 class="font-display text-4xl md:text-5xl font-bold mb-6 fade-in">
+                Application Successfully Submitted!
             </h1>
-            <p class="text-xl opacity-90 mb-8 fade-in" style="animation-delay: 0.2s;">
-                Thank you for taking this important step toward stability and independence.
+            <p class="font-body text-xl text-blue-100 mb-8 fade-in max-w-2xl mx-auto" style="animation-delay: 0.2s;">
+                Thank you for taking this crucial step toward stable housing and a brighter future. 
+                Your journey to independence starts now.
             </p>
         </div>
     </section>
@@ -109,87 +112,102 @@
     <section class="py-16">
         <div class="max-w-4xl mx-auto px-4">
             <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+                <h2 class="font-display text-3xl font-bold text-text-primary mb-8 text-center">
                     What Happens Next?
                 </h2>
                 
-                <div class="space-y-6">
+                <div class="space-y-8">
                     <!-- Timeline Steps -->
-                    <div class="flex items-start space-x-4">
+                    <div class="timeline-step flex items-start space-x-6 p-4 rounded-lg hover:bg-gray-50">
                         <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                            <div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                                 1
                             </div>
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                                Application Review (24-48 hours)
+                            <h3 class="font-display text-xl font-bold text-text-primary mb-2">
+                                Immediate Review (Within 24 Hours)
                             </h3>
-                            <p class="text-gray-600">
-                                Our admissions team will carefully review your application and assess how we can best support your needs.
+                            <p class="text-readable-secondary mb-3">
+                                Our crisis response team will review your application immediately. We understand you may need help urgently.
                             </p>
+                            <div class="flex items-center text-sm text-secondary font-semibold">
+                                <i class="fas fa-clock mr-2"></i>Expected: Same day or next business day
+                            </div>
                         </div>
                     </div>
 
-                    <div class="flex items-start space-x-4">
+                    <div class="timeline-step flex items-start space-x-6 p-4 rounded-lg hover:bg-gray-50">
                         <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                            <div class="w-14 h-14 bg-secondary rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                                 2
                             </div>
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                                Phone Screening
+                            <h3 class="font-display text-xl font-bold text-text-primary mb-2">
+                                Phone Assessment Call
                             </h3>
-                            <p class="text-gray-600">
-                                We'll call you to discuss your situation, answer questions, and schedule an in-person assessment if appropriate.
+                            <p class="text-readable-secondary mb-3">
+                                We'll call you to discuss your immediate needs, safety situation, and which program best fits your circumstances.
                             </p>
+                            <div class="flex items-center text-sm text-secondary font-semibold">
+                                <i class="fas fa-phone mr-2"></i>Duration: 15-30 minutes
+                            </div>
                         </div>
                     </div>
 
-                    <div class="flex items-start space-x-4">
+                    <div class="timeline-step flex items-start space-x-6 p-4 rounded-lg hover:bg-gray-50">
                         <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                            <div class="w-14 h-14 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                                 3
                             </div>
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                                In-Person Assessment
+                            <h3 class="font-display text-xl font-bold text-text-primary mb-2">
+                                In-Person Meeting (If Appropriate)
                             </h3>
-                            <p class="text-gray-600">
-                                Meet with our team, tour the facility, and ensure Forward Horizon is the right fit for your journey.
+                            <p class="text-readable-secondary mb-3">
+                                Meet our staff, see the facility, and complete final assessments. We'll work around your schedule and transportation needs.
                             </p>
+                            <div class="flex items-center text-sm text-purple-600 font-semibold">
+                                <i class="fas fa-handshake mr-2"></i>We can arrange transportation if needed
+                            </div>
                         </div>
                     </div>
 
-                    <div class="flex items-start space-x-4">
+                    <div class="timeline-step flex items-start space-x-6 p-4 rounded-lg hover:bg-gray-50">
                         <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                            <div class="w-14 h-14 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                                 4
                             </div>
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                                Move-In Coordination
+                            <h3 class="font-display text-xl font-bold text-text-primary mb-2">
+                                Move-In & Welcome
                             </h3>
-                            <p class="text-gray-600">
-                                If approved, we'll work with you to coordinate your move-in date and help you get settled.
+                            <p class="text-readable-secondary mb-3">
+                                If approved, we'll coordinate your move-in as quickly as possible. Your case manager will help you get settled and oriented.
                             </p>
+                            <div class="flex items-center text-sm text-yellow-600 font-semibold">
+                                <i class="fas fa-home mr-2"></i>Same-day move-in available for emergencies
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Urgent Notice -->
-                <div class="mt-8 p-6 bg-amber-50 border-l-4 border-amber-500 rounded-lg">
+                <!-- Emergency Notice -->
+                <div class="mt-8 p-6 bg-red-50 border-l-4 border-accent rounded-lg">
                     <div class="flex items-start">
-                        <i class="fas fa-exclamation-triangle text-amber-500 mt-1 mr-3"></i>
+                        <i class="fas fa-exclamation-triangle text-accent mt-1 mr-3 text-xl"></i>
                         <div>
-                            <h4 class="font-semibold text-gray-900 mb-1">Need Immediate Assistance?</h4>
-                            <p class="text-gray-700">
-                                If you're facing an emergency housing situation, please call us directly at 
-                                <a href="tel:3104885280" class="font-bold text-primary hover:underline">(310) 488-5280</a>
+                            <h4 class="font-display font-bold text-text-primary mb-2">In Crisis? Call Immediately</h4>
+                            <p class="text-readable-secondary mb-3">
+                                If you're unsafe, sleeping outside, or facing immediate housing loss, 
+                                <strong>don't wait for our call</strong> - contact us right now:
                             </p>
+                            <a href="tel:(310)488-5280" class="inline-flex items-center bg-accent text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition-colors">
+                                <i class="fas fa-phone mr-2"></i>(310) 488-5280 - 24/7 Crisis Line
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -197,91 +215,96 @@
         </div>
     </section>
 
-    <!-- Resources Section -->
+    <!-- Important Information -->
     <section class="py-16 bg-gray-100">
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">
-                Helpful Resources While You Wait
+            <h2 class="font-display text-3xl font-bold text-center text-text-primary mb-12">
+                Important Information While You Wait
             </h2>
             
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- Program Guide -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- What to Expect -->
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0">
-                            <i class="fas fa-file-pdf text-3xl text-red-500"></i>
+                            <i class="fas fa-info-circle text-3xl text-primary"></i>
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-xl font-semibold mb-2">Program Guide</h3>
-                            <p class="text-gray-600 mb-4">
-                                Download our comprehensive guide to understand what to expect during your stay.
-                            </p>
-                            <a href="/resources/timeline-expectations.html" target="_blank"
-                               class="inline-flex items-center text-primary hover:text-primary-dark font-semibold">
-                                <i class="fas fa-download mr-2"></i>
-                                View Timeline Guide
-                            </a>
+                            <h3 class="font-display text-xl font-bold mb-3 text-text-primary">What to Expect</h3>
+                            <ul class="space-y-2 text-readable-secondary">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-secondary mr-3 mt-1"></i>
+                                    <span>Safe, clean housing with 24/7 support</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-secondary mr-3 mt-1"></i>
+                                    <span>Three meals daily plus snacks</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-secondary mr-3 mt-1"></i>
+                                    <span>Case management and goal planning</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-secondary mr-3 mt-1"></i>
+                                    <span>Employment and life skills support</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Preparation Checklist -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+                <!-- Keep These Ready -->
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0">
-                            <i class="fas fa-clipboard-check text-3xl text-green-500"></i>
+                            <i class="fas fa-clipboard-list text-3xl text-purple-600"></i>
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-xl font-semibold mb-2">Preparation Checklist</h3>
-                            <p class="text-gray-600 mb-4">
-                                Get ready for your potential move-in with our helpful preparation checklist.
-                            </p>
-                            <a href="/downloads/preparation-checklist.pdf" 
-                               class="inline-flex items-center text-primary hover:text-primary-dark font-semibold">
-                                <i class="fas fa-download mr-2"></i>
-                                Download Checklist
-                            </a>
+                            <h3 class="font-display text-xl font-bold mb-3 text-text-primary">Keep These Ready</h3>
+                            <ul class="space-y-2 text-readable-secondary">
+                                <li class="flex items-start">
+                                    <i class="fas fa-arrow-right text-purple-600 mr-3 mt-1"></i>
+                                    <span>Government-issued ID</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-arrow-right text-purple-600 mr-3 mt-1"></i>
+                                    <span>Social Security card</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-arrow-right text-purple-600 mr-3 mt-1"></i>
+                                    <span>Any medical/prescription info</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-arrow-right text-purple-600 mr-3 mt-1"></i>
+                                    <span>Income documentation (if any)</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- FAQ Document -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0">
-                            <i class="fas fa-question-circle text-3xl text-blue-500"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-xl font-semibold mb-2">Frequently Asked Questions</h3>
-                            <p class="text-gray-600 mb-4">
-                                Find answers to common questions about our program and facilities.
-                            </p>
-                            <a href="/faq.html" 
-                               class="inline-flex items-center text-primary hover:text-primary-dark font-semibold">
-                                <i class="fas fa-arrow-right mr-2"></i>
-                                View FAQ
-                            </a>
-                        </div>
+                <!-- Resources -->
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition md:col-span-2">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-hands-helping text-4xl text-secondary mb-3"></i>
+                        <h3 class="font-display text-xl font-bold text-text-primary">Additional Resources</h3>
                     </div>
-                </div>
-
-                <!-- Community Resources -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0">
-                            <i class="fas fa-hands-helping text-3xl text-purple-500"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-xl font-semibold mb-2">Community Resources</h3>
-                            <p class="text-gray-600 mb-4">
-                                Additional support services available in Los Angeles County.
-                            </p>
-                            <a href="/resources/veterans-housing-guide.html" target="_blank"
-                               class="inline-flex items-center text-primary hover:text-primary-dark font-semibold">
-                                <i class="fas fa-download mr-2"></i>
-                                View Housing Resources
-                            </a>
-                        </div>
+                    <div class="grid md:grid-cols-3 gap-6 text-center">
+                        <a href="faq.html" class="group hover:bg-gray-50 p-4 rounded-lg transition">
+                            <i class="fas fa-question-circle text-2xl text-primary mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="font-semibold text-text-primary">FAQ</h4>
+                            <p class="text-sm text-readable-secondary">Common questions answered</p>
+                        </a>
+                        <a href="stories.html" class="group hover:bg-gray-50 p-4 rounded-lg transition">
+                            <i class="fas fa-heart text-2xl text-accent mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="font-semibold text-text-primary">Success Stories</h4>
+                            <p class="text-sm text-readable-secondary">Real stories of hope</p>
+                        </a>
+                        <a href="programs.html" class="group hover:bg-gray-50 p-4 rounded-lg transition">
+                            <i class="fas fa-users text-2xl text-yellow-600 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="font-semibold text-text-primary">Programs</h4>
+                            <p class="text-sm text-readable-secondary">Learn about our services</p>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -292,18 +315,18 @@
     <section class="py-16">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <div class="bg-gradient-to-r from-primary to-secondary text-white rounded-2xl p-8 md:p-12">
-                <h2 strations during our  regular phone screening session? class="text-3xl font-bold mb-4">Questions Before Your Phone Screening?</h2>
-                <p class="text-xl opacity-90 mb-8">
-                    We're here to help. Don't hesitate to reach out.
+                <h2 class="font-display text-3xl font-bold mb-4">Questions? We're Here to Help</h2>
+                <p class="font-body text-xl text-blue-100 mb-8">
+                    Don't wait for our call if you have questions or concerns. Reach out anytime.
                 </p>
                 
                 <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
-                    <a href="tel:3104885280" class="inline-flex items-center bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
-                        <i class="fas fa-phone mr-2"></i>
+                    <a href="tel:(310)488-5280" class="inline-flex items-center bg-white text-primary px-8 py-4 rounded-xl font-display font-bold text-lg shadow-lg hover:shadow-xl transition-all">
+                        <i class="fas fa-phone mr-3"></i>
                         Call (310) 488-5280
                     </a>
-                    <a href="mailto:admin@theforwardhorizon.com" class="inline-flex items-center bg-white/20 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/30 transition">
-                        <i class="fas fa-envelope mr-2"></i>
+                    <a href="mailto:admin@theforwardhorizon.com" class="inline-flex items-center border-2 border-white text-white px-8 py-4 rounded-xl font-display font-bold text-lg hover:bg-white hover:text-primary transition-all">
+                        <i class="fas fa-envelope mr-3"></i>
                         Email Us
                     </a>
                 </div>
@@ -311,55 +334,86 @@
         </div>
     </section>
 
-    <!-- Navigation -->
-    <div class="py-8 text-center">
-        <a href="/" class="inline-flex items-center text-primary hover:text-primary-dark font-semibold">
-            <i class="fas fa-arrow-left mr-2"></i>
-            Return to Homepage
-        </a>
-    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center text-white font-bold">
+                    FH
+                </div>
+                <span class="text-xl font-display font-bold">Forward Horizon</span>
+            </div>
+            <p class="text-gray-400 mb-6">Your journey to independence starts here.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-arrow-left mr-2"></i>Return to Homepage
+                </a>
+                <a href="faq.html" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-question-circle mr-2"></i>View FAQ
+                </a>
+                <a href="stories.html" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-heart mr-2"></i>Success Stories
+                </a>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6">
+                <p class="text-gray-400">&copy; 2024 Forward Horizon. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
+    <!-- JavaScript -->
     <script>
-        // Check if coming from application form
+        // Track application submission
         if (document.referrer.includes('application.html')) {
-            // Add confirmation message to localStorage for tracking
             localStorage.setItem('applicationSubmitted', new Date().toISOString());
         }
 
-        // Confetti animation (optional fun addition)
-        function createConfetti() {
-            const colors = ['#667eea', '#764ba2', '#f59e0b', '#10b981'];
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.style.cssText = `
-                    position: fixed;
-                    width: 10px;
-                    height: 10px;
-                    background: ${colors[Math.floor(Math.random() * colors.length)]};
-                    top: -10px;
-                    left: ${Math.random() * 100}%;
-                    animation: fall ${2 + Math.random() * 3}s linear;
-                    z-index: 9999;
-                `;
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 5000);
+        // Emergency contact tracking
+        function trackEmergencyCall() {
+            // Track emergency calls for analytics if needed
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'emergency_call_clicked', {
+                    'event_category': 'crisis_support',
+                    'event_label': 'application_success_page'
+                });
             }
         }
 
-        // Add falling animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fall {
-                to {
-                    transform: translateY(100vh) rotate(360deg);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
+        // Add event listeners for crisis support calls
+        document.addEventListener('DOMContentLoaded', function() {
+            const emergencyLinks = document.querySelectorAll('a[href^="tel:(310)488-5280"]');
+            emergencyLinks.forEach(link => {
+                link.addEventListener('click', trackEmergencyCall);
+            });
 
-        // Trigger confetti on load
-        setTimeout(createConfetti, 500);
+            // Fade in animations for accessibility
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+
+        // Show additional help if user stays on page longer than 5 minutes
+        setTimeout(function() {
+            const helpBanner = document.createElement('div');
+            helpBanner.className = 'fixed bottom-4 right-4 bg-accent text-white p-4 rounded-lg shadow-xl z-50 max-w-sm';
+            helpBanner.innerHTML = `
+                <div class="flex items-start space-x-3">
+                    <i class="fas fa-phone text-xl mt-1"></i>
+                    <div>
+                        <p class="font-semibold mb-1">Still waiting?</p>
+                        <p class="text-sm mb-3">If it's urgent, call us now:</p>
+                        <a href="tel:(310)488-5280" class="bg-white text-accent px-4 py-2 rounded font-semibold text-sm hover:bg-gray-100 transition-colors">
+                            Call (310) 488-5280
+                        </a>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="text-white hover:text-gray-200 text-xl">×</button>
+                </div>
+            `;
+            document.body.appendChild(helpBanner);
+        }, 300000); // 5 minutes
     </script>
 </body>
 </html>

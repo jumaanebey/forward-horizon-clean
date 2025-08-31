@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Forward Horizon Transitional Housing | Common Questions</title>
+    <meta name="description" content="Get answers to common questions about Forward Horizon's transitional housing, application process, and support services. Emergency help available 24/7.">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'primary': '#2c5530',
+                        'secondary': '#059669',
+                        'accent': '#dc2626',
+                        'gold': '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .faq-item { @apply border-b border-gray-200 py-6; }
+        .faq-question { @apply text-lg font-semibold text-gray-800 cursor-pointer flex justify-between items-center hover:text-primary transition-colors; }
+        .faq-answer { @apply mt-4 text-gray-600 leading-relaxed; }
+        .faq-icon { @apply text-primary transition-transform duration-300; }
+        .faq-item.active .faq-icon { @apply transform rotate-45; }
+        .emergency-box { @apply bg-red-50 border-2 border-red-200 rounded-xl p-6 mb-8; }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Emergency Crisis Bar -->
+    <div class="bg-accent text-white py-2 px-4 text-center font-medium">
+        <span class="mr-4">🚨 CRISIS SUPPORT:</span>
+        <a href="tel:(310)488-5280" class="font-bold hover:underline">(310) 488-5280</a>
+        <span class="mx-2">•</span>
+        <span>Available 24/7</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white">
+                        <i class="fas fa-home text-lg"></i>
+                    </div>
+                    <div>
+                        <a href="/" class="text-xl font-display font-bold text-primary hover:text-primary-dark transition-colors">Forward Horizon</a>
+                        <p class="text-xs text-gray-600">Transitional Housing LA</p>
+                    </div>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="/#programs" class="text-gray-700 hover:text-primary font-medium transition-colors">Programs</a>
+                    <a href="/#about" class="text-gray-700 hover:text-primary font-medium transition-colors">About</a>
+                    <a href="/get-involved.html" class="text-gray-700 hover:text-primary font-medium transition-colors">Get Involved</a>
+                    <span class="text-primary font-medium">FAQ</span>
+                    <a href="tel:(310)488-5280" class="bg-accent hover:bg-red-700 text-white font-semibold px-6 py-2 rounded-lg transition-all">
+                        <i class="fas fa-phone mr-2"></i>Call Now
+                    </a>
+                </div>
+
+                <button id="mobile-menu-btn" class="lg:hidden p-2">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="lg:hidden hidden pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="/#programs" class="block py-2 text-gray-700 hover:text-primary font-medium">Programs</a>
+                    <a href="/#about" class="block py-2 text-gray-700 hover:text-primary font-medium">About</a>
+                    <a href="/get-involved.html" class="block py-2 text-gray-700 hover:text-primary font-medium">Get Involved</a>
+                    <a href="tel:(310)488-5280" class="bg-accent text-white text-center py-3 rounded-lg font-semibold">
+                        <i class="fas fa-phone mr-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="bg-white py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h1 class="font-display text-4xl md:text-5xl font-bold mb-6 text-gray-800">
+                Frequently Asked Questions
+            </h1>
+            <p class="text-xl text-gray-600 mb-8">
+                Get quick answers to common questions about our transitional housing and support services.
+            </p>
+            
+            <!-- Emergency CTA -->
+            <div class="emergency-box text-center">
+                <h2 class="text-xl font-semibold text-red-800 mb-2">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>Need Immediate Help?
+                </h2>
+                <p class="text-red-700 mb-4">Don't wait - our crisis support team is available 24/7</p>
+                <a href="tel:(310)488-5280" class="bg-accent hover:bg-red-700 text-white font-bold px-8 py-4 rounded-lg transition-all inline-block">
+                    <i class="fas fa-phone mr-2"></i>Call (310) 488-5280 Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Categories -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <!-- Quick Navigation -->
+            <div class="grid md:grid-cols-4 gap-4 mb-12">
+                <a href="#emergency" class="bg-red-100 hover:bg-red-200 text-red-800 p-4 rounded-lg text-center font-medium transition-colors">
+                    <i class="fas fa-exclamation-triangle block text-2xl mb-2"></i>
+                    Emergency
+                </a>
+                <a href="#application" class="bg-blue-100 hover:bg-blue-200 text-blue-800 p-4 rounded-lg text-center font-medium transition-colors">
+                    <i class="fas fa-file-alt block text-2xl mb-2"></i>
+                    Application
+                </a>
+                <a href="#programs" class="bg-green-100 hover:bg-green-200 text-green-800 p-4 rounded-lg text-center font-medium transition-colors">
+                    <i class="fas fa-home block text-2xl mb-2"></i>
+                    Programs
+                </a>
+                <a href="#support" class="bg-purple-100 hover:bg-purple-200 text-purple-800 p-4 rounded-lg text-center font-medium transition-colors">
+                    <i class="fas fa-hands-helping block text-2xl mb-2"></i>
+                    Support
+                </a>
+            </div>
+
+            <!-- Emergency FAQs -->
+            <div id="emergency" class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <h2 class="text-2xl font-bold text-red-800 mb-6 flex items-center">
+                    <i class="fas fa-exclamation-triangle mr-3"></i>Emergency Situations
+                </h2>
+                
+                <div class="space-y-0">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>I need housing tonight - can you help?</span>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer hidden">
+                            <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
+                                <p class="font-semibold text-red-800 mb-2">Call us immediately: (310) 488-5280</p>
+                                <p>Yes, we can often provide same-day housing for crisis situations. Our intake team will:</p>
+                                <ul class="list-disc ml-6 mt-2 space-y-1">
+                                    <li>Assess your immediate needs over the phone</li>
+                                    <li>Check current bed availability</li>
+                                    <li>Arrange emergency admission if space allows</li>
+                                    <li>Connect you with other emergency resources if we're full</li>
+                                </ul>
+                                <p class="mt-3 font-medium">Don't sleep on the street - call now, even if it's 3am.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What if I'm having a mental health crisis?</span>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer hidden">
+                            <p>We have 24/7 crisis counselors on staff. If you're in immediate danger:</p>
+                            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                                <div class="bg-red-100 p-4 rounded-lg">
+                                    <p class="font-semibold text-red-800">Immediate Emergency:</p>
+                                    <p>Call 911 or go to nearest ER</p>
+                                </div>
+                                <div class="bg-blue-100 p-4 rounded-lg">
+                                    <p class="font-semibold text-blue-800">Crisis Support:</p>
+                                    <p>Call us: <a href="tel:(310)488-5280" class="font-bold underline">(310) 488-5280</a></p>
+                                </div>
+                            </div>
+                            <p class="mt-3">Our trained staff can provide immediate support and connect you with mental health services.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>I'm being evicted tomorrow - what can I do?</span>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer hidden">
+                            <p class="font-semibold text-primary mb-2">Call us immediately - we can help!</p>
+                            <p>Eviction situations are emergencies. We can:</p>
+                            <ul class="list-disc ml-6 mt-2 space-y-1">
+                                <li>Provide immediate temporary housing</li>
+                                <li>Connect you with legal aid for eviction defense</li>
+                                <li>Help with emergency rental assistance programs</li>
+                                <li>Start your application for long-term transitional housing</li>
+                            </ul>
+                            <div class="bg-accent text-white p-4 rounded-lg mt-4">
+                                <p class="font-bold">Time is critical - call now: (310) 488-5280</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application FAQs -->
+            <div id="application" class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <h2 class="text-2xl font-bold text-blue-800 mb-6 flex items-center">
+                    <i class="fas fa-file-alt mr-3"></i>Application Process
+                </h2>
+                
+                <div class="space-y-0">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How long does the application process take?</span>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer hidden">
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div class="bg-green-100 p-4 rounded-lg text-center">
+                                    <div class="text-2xl font-bold text-green-800">15 min</div>
+                                    <p class="text-sm text-green-700">Phone Interview</p>
+                                </div>
+                                <div class="bg-blue-100 p-4 rounded-lg text-center">
+                                    <div class="text-2xl font-bold text-blue-800">2 hours</div>
+                                    <p class="text-sm text-blue-700">Decision Call</p>
+                                </div>
+                                <div class="bg-purple-100 p-4 rounded-lg text-center">
+                                    <div class="text-2xl font-bold text-purple-800">Same Day</div>
+                                    <p class="text-sm text-purple-700">Move-in Possible</p>
+                                </div>
+                            </div>
+                            <p class="mt-4">For emergency situations, we can expedite the process and provide same-day housing if beds are available.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What documents do I need to apply?</span>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer hidden">
+                            <p class="mb-4">Don't worry if you don't have everything - we can help you get documents:</p>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="font-semibold text-primary mb-2">Helpful to have:</h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• ID (any form - expired OK)</li>
+                                        <li>• Social Security card</li>
+                                        <li>• Income documentation</li>
+                                        <li>• Medical records (if relevant)</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-secondary mb-2">We can help get:</h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• Replacement ID</li>
+                                        <li>• Benefits applications</li>
+                                        <li>• Medical records requests</li>
+                                        <li>• Court documents</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="mt-4 bg-blue-50 p-3 rounded-lg text-sm">
+                                <strong>Important:</strong> Missing documents won't prevent you from getting housing. We'll help you get what you need after you're safely housed.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do you have income requirements?</span>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer hidden">
+                            <p class="text-lg font-semibold text-primary mb-3">No income required to get housing!</p>
+                            <p>We serve people at all income levels:</p>
+                            <ul class="list-disc ml-6 mt-2 space-y-1">
+                                <li><strong>$0 income:</strong> We'll help you apply for benefits and find work</li>
+                                <li><strong>Some income:</strong> Sliding scale fees based on what you can afford</li>
+                                <li><strong>Regular income:</strong> Standard program fees apply</li>
+                            </ul>
+                            <p class="mt-3 bg-green-50 p-3 rounded-lg">Our goal is to help you achieve financial stability, not exclude you because of your current situation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Programs FAQs -->
+            <div id="programs" class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <h2 class="text-2xl font-bold text-green-800 mb-6 flex items-center">
+                    <i class="fas fa-home mr-3"></i>Programs & Housing
+                </h2>
+                
+                <div class="space-y-0">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What's included in the housing?</span>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer hidden">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="font-semibold text-primary mb-2">Your Room:</h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• Bed, dresser, desk</li>
+                                        <li>• Private or shared room options</li>
+                                        <li>• Secure storage</li>
+                                        <li>• Window and natural light</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-primary mb-2">Shared Spaces:</h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• Kitchen with all appliances</li>
+                                        <li>• Living/common areas</li>
+                                        <li>• Laundry facilities</li>
+                                        <li>• Computer/internet access</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="mt-4 bg-blue-50 p-3 rounded-lg text-sm">
+                                <strong>All utilities included:</strong> Electricity, water, gas, internet, cable TV
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How long can I stay?</span>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer hidden">
+                            <p>Stay length depends on your program and progress:</p>
+                            <div class="grid md:grid-cols-3 gap-4 mt-4">
+                                <div class="bg-blue-100 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-blue-800">Crisis Housing</h4>
+                                    <p class="text-sm">30-90 days</p>
+                                    <p class="text-xs text-blue-600">Emergency stabilization</p>
+                                </div>
+                                <div class="bg-green-100 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-green-800">Transitional</h4>
+                                    <p class="text-sm">6-24 months</p>
+                                    <p class="text-xs text-green-600">Most common program</p>
+                                </div>
+                                <div class="bg-purple-100 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-purple-800">Long-term</h4>
+                                    <p class="text-sm">Up to 2 years</p>
+                                    <p class="text-xs text-purple-600">Complex needs</p>
+                                </div>
+                            </div>
+                            <p class="mt-3">Extensions are possible based on your progress and circumstances. Our goal is your success, not arbitrary time limits.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I bring my belongings?</span>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer hidden">
+                            <p class="mb-3">Yes! We want you to feel at home:</p>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-green-800 mb-2">✓ Bring These:</h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• Personal clothing</li>
+                                        <li>• Electronics (laptop, phone)</li>
+                                        <li>• Personal hygiene items</li>
+                                        <li>• Important documents</li>
+                                        <li>• Sentimental items</li>
+                                        <li>• Books, photos</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-yellow-800 mb-2">⚠ Storage Limits:</h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• Space is limited</li>
+                                        <li>• We provide secure storage</li>
+                                        <li>• Large items need approval</li>
+                                        <li>• No weapons or drugs</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="mt-3">If you're coming from the streets with just a backpack, that's fine too - we'll help you get what you need.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support Services FAQs -->
+            <div id="support" class="bg-white rounded-xl shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-purple-800 mb-6 flex items-center">
+                    <i class="fas fa-hands-helping mr-3"></i>Support Services
+                </h2>
+                
+                <div class="space-y-0">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What kind of support do you provide?</span>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer hidden">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="font-semibold text-purple-800 mb-3">Mental Health & Wellness</h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• Individual counseling</li>
+                                        <li>• Group therapy sessions</li>
+                                        <li>• PTSD/trauma treatment</li>
+                                        <li>• Addiction recovery support</li>
+                                        <li>• Crisis intervention</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-purple-800 mb-3">Life Skills & Employment</h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• Job search assistance</li>
+                                        <li>• Resume writing</li>
+                                        <li>• Interview preparation</li>
+                                        <li>• Financial literacy</li>
+                                        <li>• Benefits enrollment</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="mt-4 bg-purple-50 p-3 rounded-lg">
+                                <strong>All services are voluntary</strong> - we're here to support your goals, not force participation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do you have medical services?</span>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer hidden">
+                            <p>We partner with local healthcare providers:</p>
+                            <ul class="list-disc ml-6 mt-2 space-y-1">
+                                <li>On-site nurse visits twice weekly</li>
+                                <li>Help enrolling in Medicaid/insurance</li>
+                                <li>Transportation to medical appointments</li>
+                                <li>Medication management support</li>
+                                <li>Mental health medication monitoring</li>
+                                <li>Connections to local clinics and hospitals</li>
+                            </ul>
+                            <p class="mt-3 bg-blue-50 p-3 rounded-lg text-sm">
+                                For emergencies, we're located near major medical facilities and have 24/7 staff who can assist with emergency situations.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item border-b-0">
+                        <div class="faq-question">
+                            <span>Is there staff available at night?</span>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer hidden">
+                            <p class="text-lg font-semibold text-primary mb-3">Yes - 24/7 staffing for your safety and support</p>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div class="bg-blue-100 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-blue-800">Day Shift</h4>
+                                    <p class="text-sm">7am-3pm</p>
+                                    <p class="text-xs text-blue-600">Full services available</p>
+                                </div>
+                                <div class="bg-green-100 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-green-800">Evening</h4>
+                                    <p class="text-sm">3pm-11pm</p>
+                                    <p class="text-xs text-green-600">Support & activities</p>
+                                </div>
+                                <div class="bg-purple-100 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-purple-800">Overnight</h4>
+                                    <p class="text-sm">11pm-7am</p>
+                                    <p class="text-xs text-purple-600">Crisis support available</p>
+                                </div>
+                            </div>
+                            <p class="mt-3">Night staff are trained in crisis intervention and can handle emergencies, medical situations, and provide support when you need it most.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Still Have Questions CTA -->
+    <section class="py-16 bg-primary text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-display font-bold mb-4">Still Have Questions?</h2>
+            <p class="text-xl mb-8 text-gray-200">Our team is here to help 24/7 - no question is too small.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white bg-opacity-10 rounded-xl p-6">
+                    <i class="fas fa-phone text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Call Us Anytime</h3>
+                    <a href="tel:(310)488-5280" class="text-gold hover:text-yellow-300 font-bold text-2xl block mb-2 transition-colors">
+                        (310) 488-5280
+                    </a>
+                    <p class="text-gray-300">Available 24/7 - Call even if it's 3am</p>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 rounded-xl p-6">
+                    <i class="fas fa-home text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Start Application</h3>
+                    <a href="/#apply" class="bg-accent hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg inline-block transition-all">
+                        Apply for Housing
+                    </a>
+                    <p class="text-gray-300 mt-2">Quick online application</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-home text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-display font-bold text-lg">Forward Horizon</h3>
+                            <p class="text-sm text-gray-400">Transitional Housing</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Safe housing and comprehensive support for veterans, individuals in recovery, and those re-entering society.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="/#programs" class="hover:text-white transition-colors">Programs</a></li>
+                        <li><a href="/#apply" class="hover:text-white transition-colors">Apply</a></li>
+                        <li><a href="/get-involved.html" class="hover:text-white transition-colors">Get Involved</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>
+                            <i class="fas fa-phone mr-2"></i>
+                            <a href="tel:(310)488-5280" class="hover:text-white transition-colors">(310) 488-5280</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope mr-2"></i>
+                            <a href="mailto:info@theforwardhorizon.com" class="hover:text-white transition-colors">info@theforwardhorizon.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Los Angeles, CA
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Emergency</h4>
+                    <div class="bg-accent bg-opacity-20 border border-accent rounded-lg p-4">
+                        <p class="text-sm mb-2">Crisis Support 24/7</p>
+                        <a href="tel:(310)488-5280" class="text-gold font-bold text-lg hover:text-yellow-300 transition-colors">
+                            (310) 488-5280
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2024 Forward Horizon. All rights reserved. | Licensed transitional housing facility.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.closest('.faq-item');
+                const answer = faqItem.querySelector('.faq-answer');
+                const icon = this.querySelector('.faq-icon');
+                
+                // Close other FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                        item.querySelector('.faq-answer').classList.add('hidden');
+                    }
+                });
+                
+                // Toggle current item
+                faqItem.classList.toggle('active');
+                answer.classList.toggle('hidden');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
