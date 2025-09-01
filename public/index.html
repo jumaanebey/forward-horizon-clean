@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forward Horizon | Transitional Housing Los Angeles</title>
-    <meta name="description" content="Safe transitional housing for veterans, individuals in recovery, and returning citizens. Building stability one person at a time. Call (310) 488-5280.">
+    <title>Forward Horizon - Welcome Home | Los Angeles Transitional Housing</title>
+    <meta name="description" content="Find your path forward with compassionate transitional housing in Los Angeles. We believe in second chances for veterans, those in recovery, and returning citizens. Call (310) 488-5280.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏡</text></svg>">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -21,15 +24,21 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'sans': ['Poppins', 'system-ui', 'sans-serif'],
+                        'serif': ['Merriweather', 'serif'],
                     },
                     colors: {
-                        'navy': '#1e3a8a',
-                        'navy-light': '#1e40af', 
-                        'navy-dark': '#1e2a5a',
-                        'gold': '#fbbf24',
-                        'gold-light': '#fcd34d',
-                        'gray-warm': '#374151',
+                        'primary': '#1e3a8a', // Deep navy blue - trust & stability
+                        'primary-light': '#3b82f6', // Bright blue
+                        'accent': '#fbbf24', // Hope yellow
+                        'warm': '#f97316', // Orange warmth
+                        'sage': '#6b7280', // Neutral gray
+                        'mint': '#10b981', // Success green
+                        'sand': '#f3f4f6', // Light background
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite',
                     }
                 }
             }
@@ -37,260 +46,419 @@
     </script>
 
     <style>
-        .hero-overlay {
-            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(30, 42, 95, 0.98) 100%);
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
         
-        .testimonial-card {
-            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-            box-shadow: 0 10px 40px rgba(30, 58, 138, 0.1);
+        @keyframes glow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
         
-        .impact-number {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero-pattern {
+            background-color: #fef9f3;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(62, 180, 137, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(135, 206, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(253, 184, 99, 0.1) 0%, transparent 50%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .text-balance {
+            text-wrap: balance;
         }
     </style>
 </head>
-
 <body class="font-sans text-gray-800">
-    <!-- Crisis Support Bar -->
-    <div class="bg-navy text-white py-3 px-4 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto text-center">
+    <!-- Warm Welcome Bar -->
+    <div class="bg-gradient-to-r from-mint to-sky text-white py-3 px-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-center text-center">
             <p class="text-sm md:text-base">
-                <span class="font-semibold">24/7 Crisis Support:</span>
-                <a href="tel:(310)488-5280" class="font-bold underline hover:text-gold transition-colors ml-2">(310) 488-5280</a>
+                <span>24/7 Support Available • We're here to help •</span>
+                <a href="tel:(310)488-5280" class="font-bold ml-2 underline hover:text-yellow-200">(310) 488-5280</a>
             </p>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1920&h=1080&fit=crop&crop=center" 
-                 alt="Person looking hopeful toward the future" 
-                 class="w-full h-full object-cover">
-            <div class="hero-overlay absolute inset-0"></div>
-        </div>
-
-        <!-- Content -->
-        <div class="relative z-10 max-w-7xl mx-auto px-4 text-white">
-            <div class="max-w-3xl">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
-                    Every person deserves 
-                    <span class="text-gold">a safe place to call home</span>
-                </h1>
-                
-                <p class="text-xl md:text-2xl mb-8 leading-relaxed opacity-90">
-                    We provide more than housing—we offer hope, dignity, and the support you need to rebuild your life.
-                </p>
-
-                <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                    <a href="#apply" class="bg-gold hover:bg-gold-light text-navy font-bold px-8 py-4 text-lg transition-all inline-flex items-center justify-center">
-                        Get Help Now
-                    </a>
-                    <a href="tel:(310)488-5280" class="border-2 border-white text-white hover:bg-white hover:text-navy font-bold px-8 py-4 text-lg transition-all inline-flex items-center justify-center">
-                        <i class="fas fa-phone mr-3"></i>
-                        Call (310) 488-5280
-                    </a>
-                </div>
-
-                <div class="text-sm opacity-80">
-                    Serving Los Angeles • Veterans • Recovery • Re-entry • All backgrounds welcome
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-12 z-40">
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
                 <div class="flex items-center">
-                    <div class="w-12 h-12 bg-navy text-white font-bold text-xl flex items-center justify-center mr-4">
+                    <div class="w-10 h-10 bg-gradient-to-br from-mint to-sky rounded-lg flex items-center justify-center text-white font-bold text-lg mr-3">
                         FH
                     </div>
                     <div>
-                        <h2 class="text-xl font-bold text-navy">Forward Horizon</h2>
+                        <h2 class="text-xl font-bold text-mint">Forward Horizon</h2>
                         <p class="text-xs text-gray-600">Transitional Housing LA</p>
                     </div>
                 </div>
 
+                <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#programs" class="text-gray-700 hover:text-navy font-medium transition-colors">Programs</a>
-                    <a href="#impact" class="text-gray-700 hover:text-navy font-medium transition-colors">Our Impact</a>
-                    <a href="#support" class="text-gray-700 hover:text-navy font-medium transition-colors">Support</a>
-                    <a href="#apply" class="bg-navy hover:bg-navy-light text-white px-6 py-2 font-medium transition-all">
-                        Apply Now
+                    <a href="#our-story" class="text-gray-700 hover:text-mint transition-colors">Our Story</a>
+                    <a href="#programs" class="text-gray-700 hover:text-mint transition-colors">Programs</a>
+                    <a href="#community" class="text-gray-700 hover:text-mint transition-colors">Community</a>
+                    <a href="#apply" class="bg-gradient-to-r from-mint to-sky text-white px-6 py-2 rounded-full hover:shadow-lg transition-all">
+                        Start Your Journey
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#our-story" class="text-gray-700 hover:text-primary py-2">Our Story</a>
+                    <a href="#programs" class="text-gray-700 hover:text-primary py-2">Programs</a>
+                    <a href="#community" class="text-gray-700 hover:text-primary py-2">Community</a>
+                    <a href="#apply" class="bg-primary hover:bg-primary-light text-white px-6 py-3 rounded-full text-center">
+                        Start Your Journey
                     </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Impact Stats -->
-    <section id="impact" class="py-20 bg-gray-50">
+    <!-- Hero Section -->
+    <section class="hero-pattern py-20 lg:py-32 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold text-navy mb-6">Building stability, transforming lives</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Every number represents a person who found hope, stability, and a path forward.
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- Floating Elements -->
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 text-balance">
+                    <span class="text-gray-800">Where stability</span>
+                    <span class="text-primary block mt-2">
+                        meets opportunity
+                    </span>
+                </h1>
+
+                <p class="text-lg md:text-xl text-gray-600 mb-8 font-serif leading-relaxed">
+                    We see your strength, not your struggle. Your potential, not your past. 
+                    Together, we'll build a foundation for the life you deserve.
                 </p>
-            </div>
 
-            <div class="grid md:grid-cols-4 gap-8 mb-16">
-                <div class="text-center">
-                    <div class="text-6xl md:text-7xl font-bold impact-number mb-4">24/7</div>
-                    <h3 class="text-xl font-semibold text-navy mb-2">Crisis Support</h3>
-                    <p class="text-gray-600">Always here when you need us most</p>
+                <!-- CTAs -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                    <a href="#apply" class="bg-gradient-to-r from-mint to-sky text-white font-semibold px-8 py-4 rounded-full hover:shadow-xl transition-all inline-flex items-center justify-center">
+                        Start Your Journey
+                    </a>
+                    <a href="tel:(310)488-5280" class="bg-white text-mint font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all inline-flex items-center justify-center border-2 border-mint/20">
+                        Speak With Someone Now
+                    </a>
                 </div>
 
-                <div class="text-center">
-                    <div class="text-6xl md:text-7xl font-bold impact-number mb-4">100%</div>
-                    <h3 class="text-xl font-semibold text-navy mb-2">Safe Housing</h3>
-                    <p class="text-gray-600">Every resident deserves security</p>
+                <!-- Trust Elements -->
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <div class="bg-white/80 backdrop-blur px-5 py-3 rounded-full flex items-center shadow-sm">
+                        <span class="text-gray-700">Fresh starts daily</span>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur px-5 py-3 rounded-full flex items-center shadow-sm">
+                        <span class="text-gray-700">Judgment-free support</span>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur px-5 py-3 rounded-full flex items-center shadow-sm">
+                        <span class="text-gray-700">Safe, stable housing</span>
+                    </div>
                 </div>
-
-                <div class="text-center">
-                    <div class="text-6xl md:text-7xl font-bold impact-number mb-4">365</div>
-                    <h3 class="text-xl font-semibold text-navy mb-2">Days a Year</h3>
-                    <p class="text-gray-600">Continuous support and services</p>
-                </div>
-
-                <div class="text-center">
-                    <div class="text-6xl md:text-7xl font-bold impact-number mb-4">∞</div>
-                    <h3 class="text-xl font-semibold text-navy mb-2">Potential</h3>
-                    <p class="text-gray-600">We believe in your unlimited capacity</p>
-                </div>
-            </div>
-
-            <div class="bg-white p-8 md:p-12 rounded-lg shadow-lg max-w-4xl mx-auto text-center">
-                <blockquote class="text-xl md:text-2xl text-gray-700 italic leading-relaxed">
-                    "Housing is not just shelter—it's the foundation that makes recovery possible, employment achievable, and hope real."
-                </blockquote>
-                <div class="mt-6 text-navy font-semibold">— Forward Horizon Team</div>
             </div>
         </div>
     </section>
 
-    <!-- Programs -->
-    <section id="programs" class="py-20 bg-navy text-white">
+    <!-- Community Impact Section -->
+    <section class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold mb-6">Specialized support for your journey</h2>
-                <p class="text-xl opacity-90 max-w-3xl mx-auto">
-                    Every path to stability is different. Our programs meet you where you are.
-                </p>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">A community-centered approach</h2>
+                <p class="text-lg text-gray-600 font-serif">Real people rebuilding their lives with dignity and support</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white/10 backdrop-blur p-8 rounded-lg hover:bg-white/20 transition-all">
-                    <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center text-navy text-2xl font-bold mb-6">
-                        <i class="fas fa-flag-usa"></i>
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Housing Community -->
+                <div class="text-center">
+                    <div class="bg-gradient-to-br from-mint/10 to-mint/5 rounded-2xl h-64 flex items-center justify-center mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=300&fit=crop&crop=center" 
+                             alt="Safe, dignified transitional housing" 
+                             class="w-full h-full object-cover rounded-2xl filter contrast-110">
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Veterans Program</h3>
-                    <p class="text-lg opacity-90 mb-6">Specialized support for those who served our country, including PTSD counseling and VA benefits assistance.</p>
-                    <a href="/programs.html" class="text-gold font-semibold hover:text-gold-light transition-colors">
-                        Learn More →
-                    </a>
+                    <h3 class="font-semibold text-lg mb-2">Safe Housing</h3>
+                    <p class="text-gray-600 text-sm">Clean, secure transitional homes in supportive neighborhoods</p>
                 </div>
 
-                <div class="bg-white/10 backdrop-blur p-8 rounded-lg hover:bg-white/20 transition-all">
-                    <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center text-navy text-2xl font-bold mb-6">
-                        <i class="fas fa-leaf"></i>
+                <!-- Life Skills Training -->
+                <div class="text-center">
+                    <div class="bg-gradient-to-br from-sky/10 to-sky/5 rounded-2xl h-64 flex items-center justify-center mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop&crop=center" 
+                             alt="Professional development and job training" 
+                             class="w-full h-full object-cover rounded-2xl filter contrast-110">
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Recovery Housing</h3>
-                    <p class="text-lg opacity-90 mb-6">Sober living environment with peer support groups and addiction counseling services.</p>
-                    <a href="/programs.html" class="text-gold font-semibold hover:text-gold-light transition-colors">
-                        Learn More →
-                    </a>
+                    <h3 class="font-semibold text-lg mb-2">Skills Development</h3>
+                    <p class="text-gray-600 text-sm">Job training, financial literacy, and life skills for independence</p>
                 </div>
 
-                <div class="bg-white/10 backdrop-blur p-8 rounded-lg hover:bg-white/20 transition-all">
-                    <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center text-navy text-2xl font-bold mb-6">
-                        <i class="fas fa-door-open"></i>
+                <!-- Support Network -->
+                <div class="text-center">
+                    <div class="bg-gradient-to-br from-lavender/10 to-lavender/5 rounded-2xl h-64 flex items-center justify-center mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=400&h=300&fit=crop&crop=center" 
+                             alt="Community support and connection" 
+                             class="w-full h-full object-cover rounded-2xl filter contrast-110">
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Re-entry Support</h3>
-                    <p class="text-lg opacity-90 mb-6">Comprehensive support for returning citizens, including job placement and legal assistance.</p>
-                    <a href="/programs.html" class="text-gold font-semibold hover:text-gold-light transition-colors">
-                        Learn More →
-                    </a>
+                    <h3 class="font-semibold text-lg mb-2">Community Support</h3>
+                    <p class="text-gray-600 text-sm">Peer networks and professional guidance every step of the way</p>
                 </div>
+            </div>
+
+            <div class="text-center">
+                <p class="text-gray-600 font-serif italic max-w-3xl mx-auto">
+                    "We believe in the power of community to transform lives. Through stable housing, professional development, and peer support, we help individuals build the foundation for lasting independence."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Makes Us Different -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    We're different because we
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint to-sky">care</span>
+                </h2>
+                <p class="text-lg text-gray-600 font-serif">Not just about housing, but about you as a whole person</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-gradient-to-br from-sand/30 to-white p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-seedling text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Growth-Focused</h3>
+                    <p class="text-gray-600">We don't just give you a room. We help you build skills, confidence, and connections that last a lifetime.</p>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-lavender/30 to-white p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-warm/10 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-heart text-warm text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Trauma-Informed</h3>
+                    <p class="text-gray-600">Our team understands that healing isn't linear. We meet you where you are with patience and compassion.</p>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-sky/20 to-white p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-primary-light/10 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-users text-primary-light text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Community-Centered</h3>
+                    <p class="text-gray-600">You'll join a supportive community of people who understand your journey and celebrate your victories.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-16 bg-gradient-to-br from-mint/5 to-sky/5">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Programs designed with you in mind</h2>
+                <p class="text-lg text-gray-600 font-serif">Each path is unique, just like you</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all">
+                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white mb-4">
+                        <i class="fas fa-flag-usa text-lg"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Veterans Program</h3>
+                    <p class="text-gray-600 text-sm mb-4">Honor your service with support that understands your unique journey home.</p>
+                    <a href="/programs.html" class="text-primary font-medium hover:text-primary-light transition-colors">Learn more →</a>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all">
+                    <div class="w-12 h-12 bg-gradient-to-br from-lavender to-sky rounded-lg flex items-center justify-center text-white mb-4">
+                        <i class="fas fa-leaf text-lg"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Recovery Housing</h3>
+                    <p class="text-gray-600 text-sm mb-4">A sober, supportive environment where recovery comes first.</p>
+                    <a href="/programs.html" class="text-primary font-medium hover:text-primary-light transition-colors">Learn more →</a>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all">
+                    <div class="w-12 h-12 bg-gradient-to-br from-mint to-sage rounded-lg flex items-center justify-center text-white mb-4">
+                        <i class="fas fa-door-open text-lg"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Re-entry Support</h3>
+                    <p class="text-gray-600 text-sm mb-4">Second chances are real. Build a new life with dignity and purpose.</p>
+                    <a href="/programs.html" class="text-primary font-medium hover:text-primary-light transition-colors">Learn more →</a>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all">
+                    <div class="w-12 h-12 bg-gradient-to-br from-sunset to-coral rounded-lg flex items-center justify-center text-white mb-4">
+                        <i class="fas fa-handshake text-lg"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">General Support</h3>
+                    <p class="text-gray-600 text-sm mb-4">Life happens. We're here for anyone ready to move forward.</p>
+                    <a href="/programs.html" class="text-primary font-medium hover:text-primary-light transition-colors">Learn more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Values Section -->
+    <section id="community" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Built on shared values</h2>
+                <p class="text-lg text-gray-600 font-serif">The principles that guide everything we do</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-sand/20 to-white p-8 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-sand/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-sunset text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Unconditional Acceptance</h3>
+                    <p class="text-gray-600">Everyone deserves dignity and respect, regardless of their past. We welcome you exactly as you are.</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-lavender/20 to-white p-8 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-lavender/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-seedling text-mint text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Growth Mindset</h3>
+                    <p class="text-gray-600">Change is possible at any stage of life. We believe in your potential and will help you see it too.</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-sky/20 to-white p-8 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-sky/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-home text-sky text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Home for All</h3>
+                    <p class="text-gray-600">Housing is a human right. We're here to help you find stability and build the life you envision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Visualization Section -->
+    <section class="py-16 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Building stability, one person at a time</h2>
+                <p class="text-xl opacity-90">The foundation for every success story starts with safe housing</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-accent mb-2">24/7</div>
+                    <p class="text-lg font-medium mb-1">Crisis Support</p>
+                    <p class="text-sm opacity-80">Always available when you need us most</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-accent mb-2">100%</div>
+                    <p class="text-lg font-medium mb-1">Safe Housing</p>
+                    <p class="text-sm opacity-80">Clean, secure transitional homes</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-accent mb-2">90+</div>
+                    <p class="text-lg font-medium mb-1">Day Programs</p>
+                    <p class="text-sm opacity-80">Comprehensive support plans</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-accent mb-2">∞</div>
+                    <p class="text-lg font-medium mb-1">Potential</p>
+                    <p class="text-sm opacity-80">Every person's capacity for growth</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <p class="text-lg font-serif italic max-w-3xl mx-auto opacity-90">
+                    "Housing is more than shelter—it's the stable foundation that makes everything else possible: recovery, employment, family reunification, and hope for the future."
+                </p>
             </div>
         </div>
     </section>
 
     <!-- What We Provide -->
-    <section id="support" class="py-20 bg-white">
+    <section class="py-16 bg-gradient-to-br from-mint/5 to-sky/5">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold text-navy mb-6">Everything you need to rebuild</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    We've thought of everything so you can focus on your recovery and growth.
-                </p>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Everything you need to thrive</h2>
+                <p class="text-lg text-gray-600 font-serif">We've thought of everything so you can focus on healing</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="flex items-start space-x-4">
-                    <div class="w-12 h-12 bg-navy/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-home text-navy text-xl"></i>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="flex items-start">
+                    <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                        <i class="fas fa-home text-primary"></i>
                     </div>
                     <div>
-                        <h3 class="text-xl font-semibold text-navy mb-2">Safe Housing</h3>
-                        <p class="text-gray-600">Clean, secure rooms in well-maintained homes with 24/7 security and support staff.</p>
+                        <h3 class="font-semibold mb-2">Safe, Clean Housing</h3>
+                        <p class="text-gray-600 text-sm">Private or shared rooms in well-maintained homes with common areas for community building.</p>
                     </div>
                 </div>
 
-                <div class="flex items-start space-x-4">
-                    <div class="w-12 h-12 bg-navy/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-utensils text-navy text-xl"></i>
+                <div class="flex items-start">
+                    <div class="w-8 h-8 bg-mint/10 rounded-lg flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                        <i class="fas fa-utensils text-mint"></i>
                     </div>
                     <div>
-                        <h3 class="text-xl font-semibold text-navy mb-2">Nutritious Meals</h3>
-                        <p class="text-gray-600">Three healthy meals daily prepared by our kitchen staff with dietary accommodations.</p>
+                        <h3 class="font-semibold mb-2">Nutritious Meals</h3>
+                        <p class="text-gray-600 text-sm">Three healthy meals daily, with options for dietary restrictions and preferences.</p>
                     </div>
                 </div>
 
-                <div class="flex items-start space-x-4">
-                    <div class="w-12 h-12 bg-navy/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-briefcase text-navy text-xl"></i>
+                <div class="flex items-start">
+                    <div class="w-8 h-8 bg-mint/10 rounded-lg flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                        <i class="fas fa-briefcase text-mint"></i>
                     </div>
                     <div>
-                        <h3 class="text-xl font-semibold text-navy mb-2">Job Placement</h3>
-                        <p class="text-gray-600">Resume writing, interview prep, and connections with employer partners.</p>
+                        <h3 class="font-semibold mb-2">Job Placement Help</h3>
+                        <p class="text-gray-600 text-sm">Resume building, interview prep, and connections with employer partners.</p>
                     </div>
                 </div>
 
-                <div class="flex items-start space-x-4">
-                    <div class="w-12 h-12 bg-navy/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-user-md text-navy text-xl"></i>
+                <div class="flex items-start">
+                    <div class="w-8 h-8 bg-mint/10 rounded-lg flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                        <i class="fas fa-user-md text-mint"></i>
                     </div>
                     <div>
-                        <h3 class="text-xl font-semibold text-navy mb-2">Mental Health</h3>
-                        <p class="text-gray-600">On-site counseling, therapy groups, and mental health support services.</p>
+                        <h3 class="font-semibold mb-2">Mental Health Support</h3>
+                        <p class="text-gray-600 text-sm">On-site counseling and therapy to help you process and heal.</p>
                     </div>
                 </div>
 
-                <div class="flex items-start space-x-4">
-                    <div class="w-12 h-12 bg-navy/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-graduation-cap text-navy text-xl"></i>
+                <div class="flex items-start">
+                    <div class="w-8 h-8 bg-mint/10 rounded-lg flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                        <i class="fas fa-graduation-cap text-mint"></i>
                     </div>
                     <div>
-                        <h3 class="text-xl font-semibold text-navy mb-2">Life Skills</h3>
-                        <p class="text-gray-600">Financial literacy, cooking classes, computer training, and independent living skills.</p>
+                        <h3 class="font-semibold mb-2">Life Skills Training</h3>
+                        <p class="text-gray-600 text-sm">Budgeting, cooking, computer skills, and everything you need for independent living.</p>
                     </div>
                 </div>
 
-                <div class="flex items-start space-x-4">
-                    <div class="w-12 h-12 bg-navy/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-users text-navy text-xl"></i>
+                <div class="flex items-start">
+                    <div class="w-8 h-8 bg-mint/10 rounded-lg flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                        <i class="fas fa-users text-mint"></i>
                     </div>
                     <div>
-                        <h3 class="text-xl font-semibold text-navy mb-2">Peer Support</h3>
-                        <p class="text-gray-600">Support groups, community activities, and peer mentorship programs.</p>
+                        <h3 class="font-semibold mb-2">Peer Support Groups</h3>
+                        <p class="text-gray-600 text-sm">Connect with others who understand your journey and celebrate your progress.</p>
                     </div>
                 </div>
             </div>
@@ -298,38 +466,40 @@
     </section>
 
     <!-- Apply Section -->
-    <section id="apply" class="py-20 bg-gray-50">
+    <section id="apply" class="py-20 bg-gradient-to-r from-mint to-sky text-white">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-5xl font-bold text-navy mb-8">Ready to take the next step?</h2>
-            <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-                Taking the first step toward stability takes courage. We're here to support you every step of the way.
-            </p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to take the first step?</h2>
+            <p class="text-xl mb-8 opacity-90">It takes courage to reach out. We're honored you're considering us.</p>
             
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center text-navy text-2xl font-bold mx-auto mb-6">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-navy mb-4">Call Now</h3>
-                    <p class="text-gray-600 mb-6">Speak with a real person who understands your situation. No judgment, just support.</p>
-                    <a href="tel:(310)488-5280" class="bg-navy hover:bg-navy-light text-white font-bold px-8 py-4 text-lg inline-block transition-all">
-                        (310) 488-5280
-                    </a>
-                </div>
+            <div class="bg-white/10 backdrop-blur rounded-2xl p-8 mb-8">
+                <h3 class="text-2xl font-semibold mb-6">Two ways to connect:</h3>
                 
-                <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <div class="w-16 h-16 bg-navy rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">
-                        <i class="fas fa-edit"></i>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white/10 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-phone text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-lg mb-2">Call us anytime</h4>
+                        <p class="mb-4 opacity-90">Real person, real conversation, no judgment</p>
+                        <a href="tel:(310)488-5280" class="bg-white text-mint font-bold px-6 py-3 rounded-full inline-block hover:shadow-lg transition-all">
+                            (310) 488-5280
+                        </a>
                     </div>
-                    <h3 class="text-2xl font-bold text-navy mb-4">Apply Online</h3>
-                    <p class="text-gray-600 mb-6">Take your time filling out our application. We review every submission with care.</p>
-                    <a href="/application.html" class="bg-gold hover:bg-gold-light text-navy font-bold px-8 py-4 text-lg inline-block transition-all">
-                        Start Application
-                    </a>
+                    
+                    <div class="bg-white/10 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-edit text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-lg mb-2">Apply online</h4>
+                        <p class="mb-4 opacity-90">Take your time, we'll review with care</p>
+                        <a href="/application.html" class="bg-white text-mint font-bold px-6 py-3 rounded-full inline-block hover:shadow-lg transition-all">
+                            Start application
+                        </a>
+                    </div>
                 </div>
             </div>
             
-            <p class="text-sm text-gray-500">
+            <p class="text-sm opacity-75">
                 <i class="fas fa-lock mr-2"></i>
                 Your information is always kept confidential and secure
             </p>
@@ -337,57 +507,60 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-navy text-white py-12">
+    <footer class="bg-gray-50 py-12">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <div class="flex items-center mb-6">
-                        <div class="w-10 h-10 bg-gold text-navy font-bold text-lg flex items-center justify-center mr-3">
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-mint to-sky rounded-lg flex items-center justify-center text-white font-bold text-sm mr-3">
                             FH
                         </div>
-                        <h3 class="text-xl font-bold">Forward Horizon</h3>
+                        <h3 class="font-bold text-lg">Forward Horizon</h3>
                     </div>
-                    <p class="text-navy-light">Building stability, one person at a time.</p>
+                    <p class="text-gray-600 text-sm">Building futures, one person at a time.</p>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="/programs.html" class="text-navy-light hover:text-gold transition-colors">Our Programs</a></li>
-                        <li><a href="/faq.html" class="text-navy-light hover:text-gold transition-colors">FAQs</a></li>
-                        <li><a href="/get-involved.html" class="text-navy-light hover:text-gold transition-colors">Get Involved</a></li>
+                    <h4 class="font-semibold mb-3">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/programs.html" class="text-gray-600 hover:text-primary">Our Programs</a></li>
+                        <li><a href="/stories.html" class="text-gray-600 hover:text-primary">Success Stories</a></li>
+                        <li><a href="/faq.html" class="text-gray-600 hover:text-primary">FAQs</a></li>
+                        <li><a href="/get-involved.html" class="text-gray-600 hover:text-primary">Get Involved</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold text-lg mb-4">Contact</h4>
-                    <ul class="space-y-2">
+                    <h4 class="font-semibold mb-3">Contact</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
                         <li class="flex items-center">
-                            <i class="fas fa-phone mr-3 text-gold"></i>
-                            <a href="tel:(310)488-5280" class="text-navy-light hover:text-gold transition-colors">(310) 488-5280</a>
+                            <i class="fas fa-phone mr-2 text-primary"></i>
+                            <a href="tel:(310)488-5280" class="hover:text-primary">(310) 488-5280</a>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-envelope mr-3 text-gold"></i>
-                            <a href="mailto:support@forwardhorizon.org" class="text-navy-light hover:text-gold transition-colors">support@forwardhorizon.org</a>
+                            <i class="fas fa-envelope mr-2 text-primary"></i>
+                            <a href="mailto:support@forwardhorizon.org" class="hover:text-primary">support@forwardhorizon.org</a>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-map-marker-alt mr-3 text-gold"></i>
+                            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
                             Los Angeles, CA
                         </li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold text-lg mb-4">Crisis Support</h4>
-                    <p class="text-navy-light mb-4">Available 24 hours a day, 7 days a week</p>
-                    <a href="tel:(310)488-5280" class="bg-gold text-navy font-bold px-6 py-3 inline-block hover:bg-gold-light transition-all">
-                        Call Now
-                    </a>
+                    <h4 class="font-semibold mb-3">Office Hours</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li>Monday - Friday: 8am - 8pm</li>
+                        <li>Saturday - Sunday: 9am - 5pm</li>
+                        <li class="font-semibold text-accent">Crisis support: 24/7</li>
+                    </ul>
                 </div>
             </div>
             
-            <div class="border-t border-navy-light pt-8 text-center">
-                <p class="text-navy-light">&copy; 2024 Forward Horizon. All rights reserved.</p>
+            <div class="border-t pt-8 text-center text-sm text-gray-600">
+                <p>&copy; 2024 Forward Horizon. All rights reserved.</p>
+                <p class="mt-2">Proudly serving Los Angeles</p>
             </div>
         </div>
     </footer>
@@ -397,5 +570,12 @@
     <script src="/sw.js"></script>
     <script src="/js/pwa-install.js"></script>
     <script src="/js/offline-support.js"></script>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>
